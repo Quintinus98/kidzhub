@@ -1,0 +1,33 @@
+import React, { useState } from 'react'
+import './NavBar.css';
+import { Link } from 'react-router-dom';
+import IMG1 from "../../Assets/IMG1.jpg";
+import cart from '../../Assets/cart.png';
+
+
+const NavBar = () => {
+
+   const [menu, setMenu] = useState("shop");
+
+  return (
+    <div className='navbar'>
+       <div className="nav-logo">
+          <img src={IMG1} alt="" />
+          <p>KIDZHUB</p>
+       </div>
+       <ul className='nav-menu'>
+          <li onClick={()=>{setMenu("shop")}}><Link style={{ textDecoration: 'none' }} to='/'>Shop</Link> {menu==="shop"?<hr />:<></>}</li>
+          <li onClick={()=>{setMenu("boys")}}><Link style={{ textDecoration: 'none' }}to='/boys'>Boys</Link>{menu==="boys"?<hr />:<></>}</li>
+          <li onClick={()=>{setMenu("girls")}}><Link style={{ textDecoration: 'none' }}to='/girls'>Girls</Link>{menu==="girls"?<hr />:<></>}</li>
+          <li onClick={()=>{setMenu("casuals")}}> <Link style={{ textDecoration: 'none' }}to='/casuals'>Casuals</Link>{menu==="casuals"?<hr />:<></>}</li>
+       </ul>
+       <div className="nav-login-cart">
+          <Link style={{ textDecoration: 'none' }} to='/login'><button>login</button></Link>
+          <Link style={{ textDecoration: 'none' }} to='/cart'><img src={cart} alt="" /></Link>
+          <div className='nav-cart-count'>0</div>
+       </div>
+    </div>
+  )
+}
+
+export default NavBar

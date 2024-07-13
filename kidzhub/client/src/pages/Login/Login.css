@@ -1,0 +1,76 @@
+.login{
+    width: 100%;
+    height: 100%;
+    background: #fce3fe;
+    padding-top: 20px;
+}
+.login-container{
+    width: 580px;
+    height: 600px;
+    background: white;
+    margin: auto;
+    padding: 40px 60px;
+}
+.login-container h1{
+    margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+}
+.login-fields{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+.login-fields input{
+    height: 70px;
+    width: 100%;
+    padding-left: 20px;
+    border: 1px solid #c9c9c9;
+    outline: none;
+    color: #5c5c5c;
+    font-size: 20px;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.forgot-password{
+    height: 50px;
+    color: rgb(192, 82, 209);
+    margin-top: 30px;
+    border: none;
+    font-size: 20px;
+    font-weight: 300;
+    cursor: pointer;
+}
+.forgot-password:hover{
+    transform: scale(1.10);
+    transition: 0.6s;
+}
+.continue{
+    height: 50px;
+    background-color: rgb(192, 82, 209);
+    margin-top: 30px;
+    border: none;
+    font-size: 20px;
+    font-weight: 300;
+    cursor: pointer;
+}
+.continue:hover{
+    transform: scale(1.10);
+    transition: 0.6s;
+}
+.login-log{
+    margin-top: 20px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.login-log span:hover{
+    transform: scale(1.10);
+    transition: 0.6s;
+}
