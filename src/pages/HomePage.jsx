@@ -5,14 +5,17 @@ import Hero from '../components/hero/Hero';
 import Popular from '../components/Popular/Popular';
 import Newsletter from '../components/Newsletter/Newsletter';
 
-export default function HomePage() {
-    return (
-        <div>
-            <NavBar />
-            <Hero />
-            <Popular />
-            <Newsletter />
-            <Footer />
-        </div>
-    );
+
+const HomePage = () => {
+  return (
+    <div>
+        <NavBar />
+        <Hero />
+        <Popular />
+        <Newsletter />
+        <Footer />
+    </div>
+  )
 }
+
+export default HomePage
