@@ -1,0 +1,124 @@
+.contactpage{
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #fde9fe;
+    display: flex;
+    flex-direction: column;
+  }
+  .contactpage-container{
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #e8d9e9;
+  
+  }
+  .contactpage-container h1{
+    color: rgb(68, 68, 188);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .contact-help{
+    color: black;
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  .contact-address {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 1.1rem;
+      color: #666;
+      gap: 10px;
+  }
+  .contact-address p{
+    flex: 1 1 45%;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  .contact-request{
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+    background-color: rgb(192, 192, 236);
+  }
+  .contact-request h3{
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  .contact-request input{
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  .contact-request button{
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .contact-request button:hover{
+    transform: scale(1.10);
+    transition: 0.6s;
+    background-color: #555;
+  }
+  .contact-review{
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+    background-color: rgb(211, 186, 186);
+  }
+  .contact-review h3{
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  .contact-review p{
+    font-size: 1.5rem;
+    color: #666;
+    margin: 10px 0;
+  }
+  .contact-review input{
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  .contact-review button {
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .contact-review button:hover {
+    background-color: #555;
+    transform: scale(1.10);
+    transition: 0.6s;
+  }
+  

@@ -1,9 +1,9 @@
 import React from 'react';
 import './Footer.css';
-import IMG from '../../Assets/IMG1.jpg'
-import facebook_logo from '../../Assets/facebook_logo.jpg';
-import insta_logo from '../../Assets/insta.jpg';
-import whatsapp_logo from '../../Assets/whatsapp_logo.png';
+import IMG from '../../assets/IMG1.jpg'
+import facebook_logo from '../../assets/facebook_logo.jpg';
+import insta_logo from '../../assets/insta.jpg';
+import whatsapp_logo from '../../assets/whatsapp_logo.png';
 import { Link } from 'react-router-dom';
 
 
@@ -19,7 +19,7 @@ const Footer = () => {
         <li>Company</li>
         <li>Products</li>
         <li>About</li>
-        <li>Contact</li>
+        <li><Link style={{textDecoration:'none'}}to='/contact'>Contact</Link></li>
       </ul>
       <div className="footer-social-icons">
         <div className="footer-icons-container">

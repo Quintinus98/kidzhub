@@ -1,11 +1,11 @@
 import React from 'react';
 import './ShopCategory.css';
-import Footer from '../Footer/Footer';
-import { useContext } from 'react';
-import ShopContext from '../../context/ShopContext';
-import arrow from '../../Assets/arrow.png';
-import Item from '../../components/Items/Item';
-import NavBar from '../Navbar/NavBar';
+// import { useContext } from 'react';
+// import ShopContext from '../../context/ShopContext';
+// import arrow from '../../Assets/arrow.png';
+// import Item from '../../components/Items/Item';
+import NavBar from '../../components/Navbar/NavBar';
+import Footer from '../../components/Footer/Footer';
 
 const ShopCategory = () => {
   // const {all_products}= useContext(ShopContext)

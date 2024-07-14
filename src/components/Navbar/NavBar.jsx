@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import './NavBar.css';
 import { Link } from 'react-router-dom';
-import IMG1 from "../../Assets/IMG1.jpg";
-import cart from '../../Assets/cart.png';
+import IMG1 from "../../assets/IMG1.jpg";
+import cart from '../../assets/cart.png';
 
 
 const NavBar = () => {

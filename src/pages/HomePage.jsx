@@ -1,7 +1,7 @@
 import React from 'react'
 import NavBar from '../components/Navbar/NavBar';
 import Footer from '../components/Footer/Footer';
-import Hero from '../components/hero/Hero';
+import Hero from '../components/Hero/Hero';
 import Popular from '../components/Popular/Popular';
 import Newsletter from '../components/Newsletter/Newsletter';
 

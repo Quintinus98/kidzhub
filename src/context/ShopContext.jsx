@@ -1,18 +1,21 @@
-import React, { createContext } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import './ShopContext.css';
 import all_products from '../all_products';
 
-export const ShopContext = createContext() 
+export const ShopContext = createContext(); 
 
-const ShopContextProvider = (props)=>{
-    const contextValue = {all_products};
+const ShopProvider = ({children})=>{
+    const [all_product, setAllProduct] = useState([]);
+    useEffect(()=>{
+        setAllProduct(all_products);
+    }, []);
 
     return (
-        <ShopContext.Provider value={contextValue}>
-            {props.children}
+        <ShopContext.Provider value={{all_product}}>
+            {children}
         </ShopContext.Provider>
 
-    )
-}
+    );
+};
 
-export default ShopContextProvider;
+export default ShopProvider;
