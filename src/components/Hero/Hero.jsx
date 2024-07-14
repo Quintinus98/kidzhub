@@ -1,8 +1,8 @@
 import React from 'react';
 import './Hero.css';
-import Img2 from "../../Assets/IMG2.jpg";
-// import kids from "../../Assets/kids.jpg";
-import arrow from "../../Assets/arrow.png"
+import Img2 from "../../assets/IMG2.jpg";
+// import kids from "../../assets/kids.jpg";
+import arrow from "../../assets/arrow.png"
 
 
 const Hero = () => {

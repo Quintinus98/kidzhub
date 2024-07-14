@@ -1,8 +1,8 @@
-import img1 from '../src/Assets/IMG2.jpg'
-import img2 from '../src/Assets/IMG3.jpg'
-import img3 from '../src/Assets/IMG4.jpg'
-import img4 from '../src/Assets/IMG5.jpg'
-import img5 from '../src/Assets/IMG6.jpg'
+import img1 from '../src/assets/IMG2.jpg'
+import img2 from '../src/assets/IMG3.jpg'
+import img3 from '../src/assets/IMG4.jpg'
+import img4 from '../src/assets/IMG5.jpg'
+import img5 from '../src/assets/IMG6.jpg'
 
 let all_products = [
     {
@@ -11,34 +11,49 @@ let all_products = [
         image:img1,
         new_price:15000,
         old_price:20000,
+        category:"kid's gown",
+        tag:"girls, boys, kids, fun",
+        description:" A wonderful cloth for a wonderful kid",
     },
     {
-        id:1,
+        id:2,
         name:"Come and buy",
         image:img2,
         new_price:15000,
         old_price:20000,
+        category:"kid's gown",
+        tag:"girls, boys, kids, fun",
+        description:" A wonderful cloth for a wonderful kid",
     },
     {
-        id:1,
+        id:3,
         name:"Come and buy",
         image:img3,
         new_price:15000,
         old_price:20000,
+        category:"kid's gown",
+        tag:"girls, boys, kids, fun",
+        description:" A wonderful cloth for a wonderful kid",
     },
     {
-        id:1,
+        id:4,
         name:"Come and buy",
         image:img4,
         new_price:15000,
         old_price:20000,
+        category:"kid's gown",
+        tag:"girls, boys, kids, fun",
+        description:" A wonderful cloth for a wonderful kid",
     },
     {
-        id:1,
+        id:5,
         name:"Come and buy",
         image:img5,
         new_price:15000,
         old_price:20000,
+        category:"kid's gown",
+        tag:"girls, boys, kids, fun",
+        description:" A wonderful cloth for a wonderful kid",
     },
 ];
 
