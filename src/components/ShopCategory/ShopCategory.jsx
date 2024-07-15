@@ -10,8 +10,8 @@ import Footer from '../../components/Footer/Footer';
 const ShopCategory = () => {
   // const {all_products}= useContext(ShopContext)
   return (
-    <div>  
-      <NavBar />    
+    <div>
+      <NavBar />
       {/* <div className="shop-category">
         <img src={props.banner} alt="" />
         <div className="shopCategoty-indexSort">
@@ -35,7 +35,7 @@ const ShopCategory = () => {
       </div> */}
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default ShopCategory
+export default ShopCategory;
