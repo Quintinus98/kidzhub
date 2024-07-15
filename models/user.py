@@ -1,23 +1,25 @@
 #!/usr/bin/env python3
 """User Model"""
 
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, String
 from storage import Base
+from models.base_model import BaseModel
 
 
-class User(Base):
+class User(BaseModel, Base):
     """Represents a User table"""
 
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    fullname = Column(String)
-    nickname = Column(String)
+    firstname = Column(String(60), nullable=False)
+    lastname = Column(String(60), nullable=False)
+    email = Column(String(60), nullable=False)
+    username = Column(String(60), nullable=False)
+    password = Column(String(60), nullable=False)
 
     def __repr__(self):
-        return "<User(name='%s', fullname='%s', nickname='%s')>" % (
-            self.name,
-            self.fullname,
-            self.nickname,
+        return "<User(firstname='%s', lastname='%s', email='%s')>" % (
+            self.firstname,
+            self.lastname,
+            self.email,
         )

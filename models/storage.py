@@ -3,8 +3,11 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
+from user import User
 
 Base = declarative_base()
+
+classes = {"User": User}
 
 
 class Storage:
@@ -24,18 +27,25 @@ class Storage:
             bind=self.__engine, expire_on_commit=False
         )
         Session = scoped_session(session_factory)
-        self.__session = Session\
+        self.__session = Session
 
     def add(self, obj):
-        """Adds an object to Storage"""
-        self.__session.add(obj)
+        """Adds an object to Storage
+
+        obj: list[object] | object"""
+        if isinstance(obj, list):
+            self.__session.add_all(obj)
+        else:
+            self.__session.add(obj)
 
     def save(self):
         """Commit changes to storage"""
         self.__session.commit()
 
     def delete(self, obj=None):
-        """Deletes an object from storage"""
+        """Deletes an object from storage
+
+        obj: list[object] | object"""
         if obj is not None:
             if isinstance(obj, list):
                 for instance in obj:
@@ -46,3 +56,8 @@ class Storage:
     def close(self) -> None:
         """Close the session"""
         self.__session.close()
+
+    def all(self, cls=None) -> list:
+        objs = {}
+        for clss in classes:
+            pass

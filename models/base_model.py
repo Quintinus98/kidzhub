@@ -2,10 +2,15 @@
 """Base Model"""
 from uuid import uuid4
 from datetime import datetime, timezone
+from sqlalchemy import Column, String, Integer, Double, DateTime
 
 
 class BaseModel:
     """Represents the entry point for all other classes"""
+
+    id = Column(String(60), primary_key=True)
+    created_at = Column(DateTime, default=datetime.now(timezone.utc))
+    updated_at = Column(DateTime, default=datetime.now(timezone.utc))
 
     def __init__(self, **kwargs) -> None:
         """initialize Base class"""
