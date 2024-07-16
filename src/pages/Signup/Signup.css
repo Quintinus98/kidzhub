@@ -1,70 +1,70 @@
-.signup{
-    width: 100%;
-    height: 100%;
-    background: #fce3fe;
-    padding-top: 20px;
+.signup {
+  width: 100%;
+  height: 100%;
+  background: #fce3fe;
+  padding-top: 20px;
 }
-.signup-container{
-    width: 580px;
-    height: 600px;
-    background: white;
-    margin: auto;
-    padding: 40px 60px;
+.signup-container {
+  width: 580px;
+  height: 600px;
+  background: white;
+  margin: auto;
+  padding: 40px 60px;
 }
-.signup-container h1{
-    margin: 20px 0px;
-    display: flex;
-    justify-content: center;
+.signup-container h1 {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: center;
 }
-.signup-fields{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 20px;
+.signup-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
 }
-.signup-fields input{
-    height: 70px;
-    width: 100%;
-    padding-left: 20px;
-    border: 1px solid #c9c9c9;
-    outline: none;
-    color: #5c5c5c;
-    font-size: 20px;
+.signup-fields input {
+  height: 70px;
+  width: 100%;
+  padding-left: 20px;
+  border: 1px solid #c9c9c9;
+  outline: none;
+  color: #5c5c5c;
+  font-size: 20px;
 }
-.signup-agree{
-    display: flex;
-    align-items: center;
-    margin-top: 25px;
-    gap: 20px;
-    color: #5c5c5c;
-    font-size: 18px;
-    font-weight: 500;
+.signup-agree {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  gap: 20px;
+  color: #5c5c5c;
+  font-size: 18px;
+  font-weight: 500;
 }
-.signup-continue{
-    width: 90%;
-    height: 55px;
-    background-color: rgb(167, 126, 161);
-    margin-top: 20px;
-    border: none;
-    font-size: 24px;
-    font-weight: 500;
-    cursor: pointer;
+.signup-continue {
+  width: 90%;
+  height: 55px;
+  background-color: rgb(167, 126, 161);
+  margin-top: 20px;
+  border: none;
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
 }
-.signup-continue:hover{
-    transform: scale(1.10);
-    transition: 0.6s;
+.signup-continue:hover {
+  transform: scale(1.1);
+  transition: 0.6s;
 }
-.signup-log{
-    margin-top: 20px;
-    font-size: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.signup-log {
+  margin-top: 20px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.signup-log span{
-    background-color: rgb(167, 126, 161);
+.signup-log span {
+  background-color: rgb(167, 126, 161);
 }
-.signup-log span:hover{
-    transform: scale(1.10);
-    transition: 0.6s;
+.signup-log span:hover {
+  transform: scale(1.1);
+  transition: 0.6s;
 }

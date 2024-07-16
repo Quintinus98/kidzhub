@@ -1,13 +1,12 @@
 import React from 'react';
 import './Hero.css';
-import Img2 from "../../assets/IMG2.jpg";
+import Img2 from '../../assets/IMG2.jpg';
 // import kids from "../../assets/kids.jpg";
-import arrow from "../../assets/arrow.png"
-
+import arrow from '../../assets/arrow.png';
 
 const Hero = () => {
   return (
-    <div className='hero'>
+    <div className="hero">
       <div className="hero-left">
         <h2>NEW ARRIVALS ONLY</h2>
         <div>
@@ -20,10 +19,10 @@ const Hero = () => {
         </div>
       </div>
       <div className="hero-right">
-        <img src={Img2} alt='hero' />
+        <img src={Img2} alt="hero" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
