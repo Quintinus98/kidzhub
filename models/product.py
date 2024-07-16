@@ -2,7 +2,7 @@
 """Products Model"""
 
 from sqlalchemy import Column, String, Integer, Double, ForeignKey
-from storage import Base
+from models.storage import Base
 from models.base_model import BaseModel
 
 
@@ -14,5 +14,6 @@ class Product(BaseModel, Base):
 
     name = Column(String(50), nullable=False)
     description = Column(String(125), nullable=False)
+    image = Column(String(125), nullable=False)
     price = Column(Double(), nullable=False)
     quantity = Column(Integer(), nullable=False)

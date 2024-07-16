@@ -2,7 +2,7 @@
 """Base Model"""
 from uuid import uuid4
 from datetime import datetime, timezone
-from sqlalchemy import Column, String, Integer, Double, DateTime
+from sqlalchemy import Column, String, DateTime
 
 
 class BaseModel:
