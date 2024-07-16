@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './Product.css';
-import { ShopContext } from '../../context/ShopContext';
+import { ShopContext } from '../ShopContext';
 import { useParams } from 'react-router-dom';
 import Breadcrum from '../Breadcrum/Breadcrum';
 import NavBar from '../Navbar/NavBar';

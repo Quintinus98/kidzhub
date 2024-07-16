@@ -3,7 +3,7 @@ import './NavBar.css';
 import { Link } from 'react-router-dom';
 import IMG1 from '../../assets/IMG1.jpg';
 import cart from '../../assets/cart.png';
-import { ShopContext } from '../../context/ShopContext';
+import { ShopContext } from '../ShopContext';
 
 const NavBar = () => {
   const [menu, setMenu] = useState('shop');

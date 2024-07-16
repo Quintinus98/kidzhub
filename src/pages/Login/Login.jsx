@@ -12,7 +12,11 @@ const Login = () => {
           <input type="password" placeholder="Your Password" />
         </div>
         <div className="buttons">
-          <button className="forgot-password">Forgot Password?</button>
+          <button className="forgot-password">
+            <Link style={{ textDecoration: 'none' }} to="/password">
+              Forgot Password?
+            </Link>{' '}
+          </button>
           <button className="continue">
             <Link style={{ textDecoration: 'none' }} to="/">
               Continue

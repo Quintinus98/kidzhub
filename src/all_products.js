@@ -31,7 +31,7 @@ let all_products = [
     image: img3,
     new_price: 15000,
     old_price: 20000,
-    category: "kid's gown",
+    category: 'Girls',
     tag: 'girls, boys, kids, fun',
     description: ' A wonderful cloth for a wonderful kid',
   },

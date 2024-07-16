@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './Cart.css';
 import CartItems from '../CartItems/CartItems';
-import { ShopContext } from '../../context/ShopContext';
+import { ShopContext } from '../ShopContext';
 import NavBar from '../Navbar/NavBar';
 import Footer from '../Footer/Footer';
 

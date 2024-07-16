@@ -3,7 +3,7 @@ import './ProductDisplay.css';
 import star_icon from '../../assets/star_icon.png';
 import half_star_icon from '../../assets/half_star_icon.jpg';
 import empty_star_icon from '../../assets/empty_star_icon.png';
-import { ShopContext } from '../../context/ShopContext';
+import { ShopContext } from '../ShopContext';
 
 const ProductDisplay = (props) => {
   const { product } = props;

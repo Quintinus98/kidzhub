@@ -1,5 +1,5 @@
 .cartitems {
-  margin: 100px 170px;
+  margin: 100px 150px;
 }
 .cartitems-container {
   display: flex;
@@ -74,15 +74,12 @@
 }
 @media (max-width: 768px) {
   .cartitems {
-    margin: 20px;
+    display: flex;
+    align-content: flex-start;
+    margin-left: 0px;
   }
-  .carticon-product-icon {
-    height: 120px;
-    width: 120px;
-  }
-  .cartitems-format-main {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    text-align: center;
+
+  .cartitems-container {
+    flex-direction: column;
   }
 }

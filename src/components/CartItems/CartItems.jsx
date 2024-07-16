@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
 import './CartItems.css';
-import { ShopContext } from '../../context/ShopContext';
+import { ShopContext } from '../ShopContext';
 import remove_icon from '../../assets/remove_icon.png';
+import { Link } from 'react-router-dom';
 
 const CartItems = () => {
-  const {
-    getTotalCartAmount,
-    all_product,
-    cartItems,
-    addToCart,
-    removeFromCart,
-  } = useContext(ShopContext);
+  const { getTotalCartAmount, all_product, cartItems, removeFromCart } =
+    useContext(ShopContext);
+  const totalCartAmount = getTotalCartAmount();
+
+  const handleScroll = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div>
       <div className="cartitems">
@@ -27,7 +29,7 @@ const CartItems = () => {
           {all_product.map((e) => {
             if (cartItems[e.id] > 0) {
               return (
-                <div>
+                <div key={e.id}>
                   <div className="cartitems-format cartitems-format-main">
                     <img
                       src={e.image}
@@ -61,7 +63,7 @@ const CartItems = () => {
               <h1> Cart Totals</h1>
               <div className="cartitems-total-item">
                 <p>Subtotal</p>
-                <p>#{getTotalCartAmount()}</p>
+                <p>#{totalCartAmount}</p>
               </div>
               <hr />
               <div className="cartitems-total-item">
@@ -71,9 +73,18 @@ const CartItems = () => {
               <hr />
               <div className="cartitems-total-item">
                 <h3>Total</h3>
-                <h3>#{getTotalCartAmount()}</h3>
+                <h3>#{totalCartAmount}</h3>
               </div>
-              <button>PROCEED TO CHECKOUT</button>
+              <button>
+                <Link
+                  style={{ textDecoration: 'none' }}
+                  to="/checkout"
+                  onClick={handleScroll}
+                >
+                  {' '}
+                  PROCEED TO CHECKOUT
+                </Link>
+              </button>
             </div>
           </div>
         </div>
