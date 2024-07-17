@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Products Model"""
 
-from sqlalchemy import Column, String, Integer, Double, ForeignKey
-from models.storage import Base
-from models.base_model import BaseModel
+from sqlalchemy import Column, String, Integer, Double
+from models.base_model import BaseModel, Base
+
 
 
 class Product(BaseModel, Base):

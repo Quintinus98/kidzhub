@@ -3,14 +3,15 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import storage
 from models.user import User
-from models.storage import Base
+from models.engine.storage import Base
 from werkzeug.security import generate_password_hash
+
 
 class TestUserModel(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """Setup a temporary in-memory database and session for testing"""
-        cls.engine = create_engine('sqlite:///:memory:')
+        cls.engine = create_engine("sqlite:///:memory:")
         Base.metadata.create_all(cls.engine)
         cls.Session = sessionmaker(bind=cls.engine)
 
@@ -34,14 +35,16 @@ class TestUserModel(unittest.TestCase):
             lastname="Doe",
             email="john.doe@example.com",
             username="johndoe",
-            password="password123"
+            password="password123",
         )
         storage.add(user)
         storage.save()
         # self.session.add(user)
         # self.session.commit()
 
-        queried_user = self.session.query(User).filter_by(username="johndoe").first()
+        queried_user = (
+            self.session.query(User).filter_by(username="johndoe").first()
+        )
         self.assertIsNotNone(queried_user)
         self.assertEqual(queried_user.firstname, "John")
         self.assertEqual(queried_user.lastname, "Doe")
@@ -55,7 +58,7 @@ class TestUserModel(unittest.TestCase):
             lastname="Doe",
             email="jane.doe@example.com",
             username="janedoe",
-            password="password123"
+            password="password123",
         )
         self.session.add(user1)
         self.session.commit()
@@ -65,12 +68,12 @@ class TestUserModel(unittest.TestCase):
             lastname="Smith",
             email="jane.doe@example.com",  # Duplicate email
             username="johnsmith",
-            password="password123"
+            password="password123",
         )
         self.session.add(user2)
         with self.assertRaises(Exception):
             self.session.commit()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

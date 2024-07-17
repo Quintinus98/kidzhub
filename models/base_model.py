@@ -3,7 +3,9 @@
 from uuid import uuid4
 from datetime import datetime, timezone
 from sqlalchemy import Column, String, DateTime
+from sqlalchemy.ext.declarative import declarative_base
 
+Base = declarative_base()
 
 class BaseModel:
     """Represents the entry point for all other classes"""

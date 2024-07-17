@@ -2,8 +2,7 @@
 """User Model"""
 
 from sqlalchemy import Column, String
-from models.storage import Base
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 import bcrypt
 
 
@@ -17,21 +16,8 @@ class User(BaseModel, Base):
     email = Column(String(60), nullable=False, unique=True)
     username = Column(String(60), nullable=False)
     hashed_password = Column(String(60), nullable=False)
-
-    def __init__(self, **kwargs) -> None:
-        super().__init__(**kwargs)
-        if "password" in kwargs:
-            self.password = kwargs["password"]
-
-    @property
-    def password(self):
-        raise AttributeError("Password cannot be read")
-
-    @property.setter
-    def password(self, password):
-        self.hashed_password = bcrypt.hashpw(
-            password.encode("utf-8"), bcrypt.gensalt()
-        )
+    session_id = Column(String(250))
+    reset_token = Column(String(250))
 
     def __repr__(self):
         return "<User(firstname='%s', lastname='%s', email='%s')>" % (

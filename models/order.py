@@ -2,8 +2,8 @@
 """Orders Model"""
 
 from sqlalchemy import Column, String, Integer, ForeignKey, Double
-from models.storage import Base
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
+
 
 
 class Order(BaseModel, Base):
