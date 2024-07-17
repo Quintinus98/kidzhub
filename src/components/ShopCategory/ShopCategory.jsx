@@ -30,11 +30,6 @@ const ShopCategory = (props) => {
             }
           })}
         </div>
-        <div className="shopCategory-indexSort">
-          <p>
-            <span>Showing 1-12</span> out of 36 products
-          </p>
-        </div>
       </div>
       <Footer />
     </div>

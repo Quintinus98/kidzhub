@@ -30,24 +30,8 @@ const CheckOut = () => {
             </form>
           </div>
           <div className="checkout-right">
-            <h2>Order Summary</h2>
-            <div className="checkout-items">
-              {all_product.map((item) => {
-                if (cartItems[item.id] > 0) {
-                  return (
-                    <div key={item.id} className="checkout-item">
-                      <p>
-                        {item.name} x {cartItems[item.id]}
-                      </p>
-                      <p>#{item.new_price * cartItems[item.id]}</p>
-                    </div>
-                  );
-                }
-                return null;
-              })}
-            </div>
             <div className="checkout-total">
-              <p>Total: #{getTotalCartAmount()}</p>
+              <p>Total Price: #{getTotalCartAmount()}</p>
             </div>
             <h2>Payment Information</h2>
             <form className="checkout-form">

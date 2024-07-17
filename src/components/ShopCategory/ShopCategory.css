@@ -1,12 +1,21 @@
 .shopCategory-products {
-  margin: 20px 170px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  row-gap: 80px;
+  margin: 20px;
+  display: flex;
+  row-gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40px;
 }
 .shopCategory-indexSort {
   display: flex;
-  margin: opx 170px;
+  margin: 0px 170px;
   justify-content: space-between;
   align-items: center;
+}
+@media (max-width: 768px) {
+  .shopCategory-products {
+    display: flex;
+    /* flex-direction: row; */
+  }
 }

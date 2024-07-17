@@ -5,8 +5,14 @@ import remove_icon from '../../assets/remove_icon.png';
 import { Link } from 'react-router-dom';
 
 const CartItems = () => {
-  const { getTotalCartAmount, all_product, cartItems, removeFromCart } =
-    useContext(ShopContext);
+  const {
+    getTotalCartAmount,
+    all_product,
+    cartItems,
+    removeFromCart,
+    selectedImages,
+    selectedSizes,
+  } = useContext(ShopContext);
   const totalCartAmount = getTotalCartAmount();
 
   const handleScroll = () => {
@@ -26,27 +32,30 @@ const CartItems = () => {
             <p>Remove</p>
           </div>
           <hr />
-          {all_product.map((e) => {
-            if (cartItems[e.id] > 0) {
+          {all_product.map((product) => {
+            if (cartItems[product.id] > 0) {
+              const selectedSize = selectedSizes[product.id];
+              const price = product.prices[selectedSize] || 0;
+              const totalItemPrice = price * cartItems[product.id];
               return (
-                <div key={e.id}>
+                <div key={product.id}>
                   <div className="cartitems-format cartitems-format-main">
                     <img
-                      src={e.image}
+                      src={selectedImages[product.id]}
                       alt=""
                       className="carticon-product-icon"
                     />
-                    <p>{e.name}</p>
-                    <p>#{e.new_price}</p>
+                    <p>{product.name}</p>
+                    <p>#{price}</p>
                     <button className="cartitems-quantity">
-                      {cartItems[e.id]}{' '}
+                      {cartItems[product.id]}
                     </button>
-                    <p> #{e.new_price * cartItems[e.id]} </p>
+                    <p> #{totalItemPrice} </p>
                     <div className="cartitems-remove-icon">
                       <img
                         src={remove_icon}
                         onClick={() => {
-                          removeFromCart(e.id);
+                          removeFromCart(product.id);
                         }}
                         alt=""
                       />
@@ -60,7 +69,7 @@ const CartItems = () => {
           })}
           <div className="cartitems-down">
             <div className="cartitems-total">
-              <h1> Cart Totals</h1>
+              <h1> Cart Total</h1>
               <div className="cartitems-total-item">
                 <p>Subtotal</p>
                 <p>#{totalCartAmount}</p>
@@ -73,7 +82,7 @@ const CartItems = () => {
               <hr />
               <div className="cartitems-total-item">
                 <h3>Total</h3>
-                <h3>#{totalCartAmount}</h3>
+                <h3>#{totalCartAmount.toFixed(2)}</h3>
               </div>
               <button>
                 <Link
