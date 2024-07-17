@@ -2,8 +2,7 @@
 """Review Model"""
 
 from sqlalchemy import Column, String, ForeignKey, Integer, Text
-from models.storage import Base
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 
 
 class Review(BaseModel, Base):

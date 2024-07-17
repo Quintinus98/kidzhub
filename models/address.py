@@ -2,8 +2,8 @@
 """Address Model"""
 
 from sqlalchemy import Column, String, ForeignKey
-from models.storage import Base
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
+
 
 
 class Address(BaseModel, Base):
