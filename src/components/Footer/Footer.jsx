@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import IMG from '../../assets/IMG1.jpg';
+import IMG from '../../assets/IMG1.png';
 import facebook_logo from '../../assets/facebook_logo.jpg';
 import insta_logo from '../../assets/insta.jpg';
 import whatsapp_logo from '../../assets/whatsapp_logo.png';

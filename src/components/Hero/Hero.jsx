@@ -1,7 +1,6 @@
 import React from 'react';
 import './Hero.css';
-import Img2 from '../../assets/IMG2.jpg';
-// import kids from "../../assets/kids.jpg";
+import Img2 from '../../assets/web_new.jpg';
 import arrow from '../../assets/arrow.png';
 
 const Hero = () => {
