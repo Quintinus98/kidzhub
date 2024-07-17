@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 """User API"""
 # from flask import request, abort, jsonify, make_response
-from flask import Flask, request, jsonify, abort, make_response, url_for, redirect
+from flask import (
+    Flask,
+    request,
+    jsonify,
+    abort,
+    make_response,
+    url_for,
+    redirect,
+)
 from api.auth.auth import Auth
 from api.v1.views import app_views
 
@@ -15,7 +23,6 @@ AUTH = Auth()
 #     return jsonify(data)
 
 
-
 @app_views.route("/", methods=["GET"])
 def home():
     """Home route"""
@@ -23,16 +30,21 @@ def home():
 
 
 @app_views.route("/register", methods=["POST"])
-def users():
+def register():
     """End-point to register a user"""
-    email = request.form.get("email")
-    password = request.form.get("password")
     data = request.form
     try:
         user = AUTH.register_user(data)
-        return jsonify({"email": f"{email}", "message": "user created"})
+        return jsonify({"message": "user created"})
     except ValueError:
         return jsonify({"message": "email already registered"}), 400
+
+
+@app_views.route("/users", methods=["GET"])
+def users():
+    """Return all users"""
+    user = AUTH.get_users()
+    return (user)
 
 
 @app_views.route("/sessions", methods=["POST"])

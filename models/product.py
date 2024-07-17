@@ -5,7 +5,6 @@ from sqlalchemy import Column, String, Integer, Double
 from models.base_model import BaseModel, Base
 
 
-
 class Product(BaseModel, Base):
     """This class stores information about products
     available"""

@@ -5,7 +5,6 @@ from sqlalchemy import Column, String, Integer, ForeignKey
 from models.base_model import BaseModel, Base
 
 
-
 class Cart(BaseModel, Base):
     """This class stores information about items in a user's cart"""
 

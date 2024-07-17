@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Storage Model"""
 
-from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy.orm import sessionmaker, scoped_session, Session
 from sqlalchemy import create_engine
 
 from sqlalchemy.exc import NoResultFound
@@ -36,14 +36,14 @@ class Storage:
 
     def __init__(self) -> None:
         """Entry point"""
-        self._engine = create_engine("sqlite:///:memory:", echo=True)
+        self._engine = create_engine("sqlite:///a.db")
         Base.metadata.create_all(self._engine)
         self.__session = None
 
     @property
-    def _session(self) -> None:
+    def _session(self) -> Session:
         """Memoized session
-        
+
         Load database session"""
         if self.__session is None:
             session_factory = sessionmaker(
@@ -115,7 +115,30 @@ class Storage:
         """Close the session"""
         self._session.close()
 
-    def all(self, cls=None) -> list:
-        objs = {}
+    def all(self, cls=None) -> dict:
+        """Returns all instances of a class or all instances."""
+        objects = {}
         for clss in classes:
-            pass
+            if cls is None or cls is classes[clss] or cls is clss:
+                objs = self._session.query(classes[clss]).all()
+                for obj in objs:
+                    key = f"{obj.__class__.__name__}.{obj.id}"
+                    objects[key] = obj
+        return objects
+
+    def get(self, cls, obj_id):
+        """Get's a particular table value using it's id"""
+        instance = self.all(cls)
+        if not instance or len(instance) == 0:
+            return None
+        for value in instance.values():
+            if value.id == obj_id:
+                return value
+        return None
+
+    def get_user(self, email) -> dict:
+        """Get's a user from it's email"""
+        obj = self.__session.query(User).filter_by(email=email).first()
+        if obj:
+            return obj.to_dict()
+        return {}

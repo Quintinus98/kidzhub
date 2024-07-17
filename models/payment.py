@@ -5,7 +5,6 @@ from sqlalchemy import Column, String, Double, ForeignKey
 from models.base_model import BaseModel, Base
 
 
-
 class Payment(BaseModel, Base):
     """This class stores information about payments made for orders"""
 

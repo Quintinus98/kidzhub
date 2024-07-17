@@ -5,7 +5,6 @@ from sqlalchemy import Column, String, ForeignKey
 from models.base_model import BaseModel, Base
 
 
-
 class Address(BaseModel, Base):
     """This class stores users addresses"""
 

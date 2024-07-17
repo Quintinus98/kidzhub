@@ -4,18 +4,6 @@ import bcrypt
 
 from sqlalchemy.orm.exc import NoResultFound
 import uuid
-from typing import Optional
-
-
-def _hash_password(password: str) -> bytes:
-    """Takes a password string argument and returns bytes.
-
-    Returns: The returned bytes is a salted hash of the input password
-    """
-    password_bytes = password.encode("utf-8")
-    salt = bcrypt.gensalt()
-    hashed_password = bcrypt.hashpw(password_bytes, salt)
-    return hashed_password
 
 
 def _generate_uuid() -> str:
@@ -28,22 +16,31 @@ class Auth:
 
     def __init__(self):
         from models.engine.storage import Storage
+
         """Initialize Auth with DB"""
         self._db = Storage()
+
+    def get_users(self):
+        """Returns all user"""
+        users = self._db.all()
+        allUsers = []
+        for key, val in users.items():
+            allUsers.append(val.to_dict())
+        print(allUsers)
+        return allUsers
 
     def register_user(self, data: object):
         """Returns a User object"""
         from models.user import User
 
         keys = ["firstname", "lastname", "email", "username", "password"]
-        if keys not in data:
-            raise ValueError(f"Incomplete details")
+        # if keys not in dict(data.keys()):
+        #     raise ValueError(f"Incomplete details")
         email = data.get("email")
         # password = data.get("password")
         try:
             user = self._db.find_user_by(email=email)
         except NoResultFound:
-            # hashed_password = _hash_password(password)
             user_obj = User(**data)
             user = self._db.add(user_obj)
 
@@ -58,7 +55,7 @@ class Auth:
         except NoResultFound:
             return False
         password_bytes = password.encode("utf-8")
-        res = bcrypt.checkpw(password_bytes, user.hashed_password)
+        res = bcrypt.checkpw(password_bytes, user.password)
         return res
 
     def create_session(self, email: str) -> str:

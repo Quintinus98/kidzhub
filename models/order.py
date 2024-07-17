@@ -5,7 +5,6 @@ from sqlalchemy import Column, String, Integer, ForeignKey, Double
 from models.base_model import BaseModel, Base
 
 
-
 class Order(BaseModel, Base):
     """This class stores information about orders placed"""
 

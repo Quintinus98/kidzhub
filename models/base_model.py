@@ -7,6 +7,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
+
 class BaseModel:
     """Represents the entry point for all other classes"""
 
@@ -20,7 +21,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.now(timezone.utc)
             self.updated_at = self.created_at
-        self.create(kwargs=kwargs)
+        self.create(**kwargs)
 
     def create(self, **kwargs):
         """Create Base with key words"""
