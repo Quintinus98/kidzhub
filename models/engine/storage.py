@@ -110,6 +110,7 @@ class Storage:
                     self._session.delete(instance)
             else:
                 self._session.delete(obj)
+            self._session.commit()
 
     def close(self) -> None:
         """Close the session"""

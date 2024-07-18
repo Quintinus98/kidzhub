@@ -4,7 +4,7 @@
 from sqlalchemy import Column, String
 from models.base_model import BaseModel, Base
 import bcrypt
-
+from sqlalchemy.orm import relationship
 
 class User(BaseModel, Base):
     """Represents a User table"""
@@ -18,6 +18,10 @@ class User(BaseModel, Base):
     password = Column(String(250), nullable=False)
     session_id = Column(String(250))
     reset_token = Column(String(250))
+
+    addresses = relationship("Address", cascade="all, delete")
+    cart = relationship("Cart", cascade="all, delete")
+    order = relationship("Order", cascade="all, delete")
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)

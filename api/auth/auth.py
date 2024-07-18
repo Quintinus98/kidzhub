@@ -25,8 +25,9 @@ class Auth:
         users = self._db.all()
         allUsers = []
         for key, val in users.items():
-            allUsers.append(val.to_dict())
-        print(allUsers)
+            value = val.to_dict()
+            value.pop("password")
+            allUsers.append(value)
         return allUsers
 
     def register_user(self, data: object):
@@ -34,10 +35,9 @@ class Auth:
         from models.user import User
 
         keys = ["firstname", "lastname", "email", "username", "password"]
-        # if keys not in dict(data.keys()):
-        #     raise ValueError(f"Incomplete details")
+        if keys != list(data.keys()):
+            raise ValueError(f"Incomplete details")
         email = data.get("email")
-        # password = data.get("password")
         try:
             user = self._db.find_user_by(email=email)
         except NoResultFound:
@@ -78,7 +78,7 @@ class Auth:
             return None
         return user
 
-    def destroy_session(self, user_id: int) -> None:
+    def destroy_session(self, user_id: str) -> None:
         """Destroys a session"""
         self._db.update_user(user_id, session_id=None)
 
@@ -98,6 +98,21 @@ class Auth:
             user = self._db.find_user_by(reset_token=reset_token)
         except NoResultFound:
             raise ValueError
-        hashed_password = _hash_password(password)
-        self._db.update_user(user.id, hashed_password=hashed_password)
+        self._db.update_user(user.id, password=password)
         self._db.update_user(user.id, reset_token=None)
+
+    def update_user(self, data, user) -> None:
+        """Update password"""
+        if data.get("password"):
+            raise ValueError("Cannot update password")
+        try:
+            user = self._db.update_user(user_id=user.id, **data)
+        except NoResultFound:
+            raise ValueError
+
+    def delete_user(self, user) -> None:
+        """Delete User"""
+        try:
+            user = self._db.delete(user)
+        except NoResultFound:
+            raise ValueError

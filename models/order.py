@@ -3,6 +3,7 @@
 
 from sqlalchemy import Column, String, Integer, ForeignKey, Double
 from models.base_model import BaseModel, Base
+from sqlalchemy.orm import relationship
 
 
 class Order(BaseModel, Base):
@@ -11,9 +12,8 @@ class Order(BaseModel, Base):
     __tablename__ = "orders"
 
     user_id = Column(String(60), ForeignKey("users.id"))
-    status = Column(String(60), nullable=False)
-    quantity = Column(Integer(), nullable=False)
-    # order_date will be equal to created_at (gen from BaseModel)
+    orderItems = relationship("OrderItems", cascade="all, delete")
+    payment = relationship("Payment", cascade="all, delete")
 
 
 class OrderItems(BaseModel, Base):
@@ -25,3 +25,4 @@ class OrderItems(BaseModel, Base):
     product_id = Column(String(60), ForeignKey("products.id"))
     quantity = Column(Integer(), nullable=False)
     price = Column(Double(), nullable=False)
+    status = Column(String(60), nullable=False)

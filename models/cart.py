@@ -3,6 +3,7 @@
 
 from sqlalchemy import Column, String, Integer, ForeignKey
 from models.base_model import BaseModel, Base
+from sqlalchemy.orm import relationship
 
 
 class Cart(BaseModel, Base):
@@ -11,6 +12,8 @@ class Cart(BaseModel, Base):
     __tablename__ = "carts"
 
     user_id = Column(String(60), ForeignKey("users.id"))
+    cartItems = relationship("CartItems", cascade="all, delete")
+
 
 
 class CartItems(BaseModel, Base):
