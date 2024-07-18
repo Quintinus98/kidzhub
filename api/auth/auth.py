@@ -26,7 +26,7 @@ class Auth:
         allUsers = []
         for key, val in users.items():
             value = val.to_dict()
-            value.pop("password")
+            value.pop("password", None)
             allUsers.append(value)
         return allUsers
 
@@ -116,3 +116,24 @@ class Auth:
             user = self._db.delete(user)
         except NoResultFound:
             raise ValueError
+
+    def get_user_cart(self, user_id):
+        """Returns user cart information"""
+        from models.cart import Cart, CartItems
+
+        try:
+            cart = (
+                self._db._session.query(Cart)
+                .filter_by(user_id=user_id)
+                .first()
+            )
+            cartItems = self._db._session.query(CartItems).filter_by(
+                cart_id=cart.id
+            )
+            items = [
+                {"product_id": item.product_id, "quantity": item.quantity}
+                for item in cartItems
+            ]
+        except NoResultFound:
+            raise ValueError
+        return items

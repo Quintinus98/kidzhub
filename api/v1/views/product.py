@@ -1,147 +1,90 @@
-# #!/usr/bin/env python3
-# """User API"""
-# # from flask import request, abort, jsonify, make_response
-# from flask import (
-#     Flask,
-#     request,
-#     jsonify,
-#     abort,
-#     make_response,
-#     url_for,
-#     redirect,
-# )
-# from api.auth.auth import Auth
-# from api.v1.views import app_views
-
-# AUTH = Auth()
-
-# @app_views.route("/", methods=["GET"])
-# def home():
-#     """Home route"""
-#     return jsonify({"message": "Bienvenue"})
+#!/usr/bin/env python3
+"""User API"""
+# from flask import request, abort, jsonify, make_response
+from flask import (
+    Flask,
+    request,
+    jsonify,
+    abort,
+    make_response,
+    url_for,
+    redirect,
+)
+from api.auth.auth import Auth
+from models.engine.storage import Storage
+from api.v1.views import app_views
+from models.product import Product
+from sqlalchemy.exc import NoResultFound
 
 
-
-# @app_views.route("/getusers", methods=["GET"])
-# def getUsers():
-#     """Return all users"""
-#     user = AUTH.get_users()
-#     return user
+db = Storage()
 
 
-# @app_views.route("/users", methods=["POST"])
-# def users():
-#     """End-point to register a user"""
-#     data = request.form
-#     try:
-#         user = AUTH.register_user(data)
-#         return jsonify({"message": "user created"})
-#     except ValueError:
-#         return jsonify({"message": "email already registered"}), 400
-
-# # Get user profile via user id
-# @app_views.route("/users/:id", methods=["POST"])
-# def user(id: str):
-#     """Get profile"""
-#     pass
-
-# # Update a user profile via session_id
-# @app_views.route("/users", methods=["PUT"])
-# def updateProfile():
-#     """Get profile"""
-#     session_id = request.cookies.get("session_id")
-#     if not session_id:
-#         abort(403)
-#     user = AUTH.get_user_from_session_id(session_id)
-#     if user is None:
-#         abort(403)
-#     data = request.form
-#     AUTH.update_user(data, user)
-#     return make_response(jsonify({"message": "user updated"}), 201)
-
-# # Delete a user profile via session_id
-# @app_views.route("/users", methods=["DELETE"])
-# def deleteProfile():
-#     """Get profile"""
-#     session_id = request.cookies.get("session_id")
-#     if not session_id:
-#         abort(403)
-#     user = AUTH.get_user_from_session_id(session_id)
-#     if user is None:
-#         abort(403)
-#     AUTH.destroy_session(user.id)
-#     AUTH.delete_user(user)
-#     return make_response(jsonify({"message": "User Deleted"}), 201)
+@app_views.route("/products", methods=["GET"])
+def all_products():
+    """Return all products"""
+    try:
+        products = db._session.query(Product).all()
+    except ValueError:
+        return jsonify([])
+    allProducts = [product.to_dict() for product in products]
+    return jsonify(allProducts), 200
 
 
-# # Get user profile via session_id
-# @app_views.route("/profile", methods=["GET"])
-# def profile():
-#     """Get profile"""
-#     session_id = request.cookies.get("session_id")
-#     if not session_id:
-#         abort(403)
-
-#     user = AUTH.get_user_from_session_id(session_id)
-#     if user is None:
-#         abort(403)
-#     return make_response(jsonify({"email": f"{user.email}"}), 200)
-
-
-# @app_views.route("/sessions", methods=["POST"])
-# def login():
-#     """Login function"""
-#     email = request.form.get("email")
-#     password = request.form.get("password")
-#     if AUTH.valid_login(email, password):
-#         session_id = AUTH.create_session(email)
-#         res = jsonify({"email": f"{email}", "message": "logged in"})
-#         res.set_cookie("session_id", session_id)
-#         return res
-
-#     abort(401)
+@app_views.route("/products", methods=["POST"])
+def create_product():
+    """End-point to register a product"""
+    data = request.form
+    keys = ["name", "description", "image", "price", "quantity"]
+    if keys != list(data.keys()):
+        raise ValueError(f"Incomplete details")
+    try:
+        product = Product(**data)
+        db.add(product)
+        return jsonify({f"{product.id}": f"{product.to_dict()}"})
+    except ValueError:
+        return jsonify({"message": "Failed to create product"}), 400
 
 
-# @app_views.route("/sessions", methods=["DELETE"])
-# def logout():
-#     """Log out the User"""
-#     session_id = request.cookies.get("session_id")
-#     if not session_id:
-#         abort(403)
-
-#     user = AUTH.get_user_from_session_id(session_id)
-#     if user is None:
-#         abort(403)
-
-#     AUTH.destroy_session(user.id)
-#     res = make_response(redirect(url_for("home")))
-#     res.set_cookie("session_id", "", 0)
-#     return res
+@app_views.route("/products/<id>", methods=["GET"])
+def get_product(id):
+    """Get a product if it exists"""
+    try:
+        product = db._session.query(Product).filter_by(id=id).first()
+    except NoResultFound:
+        return jsonify({"message": "Product Unavailable"})
+    if product is None:
+        return jsonify({"message": "Product is Unavailable"})
+    return jsonify(product.to_dict())
 
 
-# @app_views.route("/reset_password", methods=["POST"])
-# def get_reset_password_token():
-#     email = request.form.get("email")
-#     if not email:
-#         abort(403)
-#     try:
-#         reset_token = AUTH.get_reset_password_token(email)
-#     except ValueError:
-#         abort(403)
-#     return make_response(
-#         jsonify({"email": f"{email}", "reset_token": f"{reset_token}"}), 200
-#     )
+@app_views.route("/products/<id>", methods=["PUT"])
+def update_product(id):
+    """Get a product if it exists"""
+    try:
+        product = db._session.query(Product).filter_by(id=id).first()
+    except NoResultFound:
+        return jsonify({"message": "Product Unavailable"})
+    data = request.form
+    valid_attr = Product.__table__.columns.keys()
+    for key in data.keys():
+        if key not in valid_attr:
+            raise ValueError
+    for key, val in data.items():
+        setattr(product, key, val)
+    db._session.commit()
+
+    return make_response(jsonify({"message": "Product updated"}), 201)
 
 
-# @app_views.route("/reset_password", methods=["PUT"])
-# def update_password():
-#     email = request.form.get("email")
-#     reset_token = request.form.get("reset_token")
-#     new_password = request.form.get("new_password")
-#     try:
-#         AUTH.update_password(reset_token, new_password)
-#     except ValueError:
-#         abort(403)
-#     return make_response(
-#         jsonify({"email": f"{email}", "message": "Password updated"}, 200)
-#     )
+@app_views.route("/products/<id>", methods=["DELETE"])
+def delete_product(id):
+    """Get profile"""
+    try:
+        product = db._session.query(Product).filter_by(id=id).first()
+    except NoResultFound:
+        return jsonify({"message": "Product Unavailable"})
+    db._session.delete(product)
+    db._session.commit()
+
+    return make_response(jsonify({"message": "Product Deleted"}), 201)

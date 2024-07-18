@@ -6,6 +6,7 @@ from models.base_model import BaseModel, Base
 import bcrypt
 from sqlalchemy.orm import relationship
 
+
 class User(BaseModel, Base):
     """Represents a User table"""
 

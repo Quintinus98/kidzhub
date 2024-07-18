@@ -15,7 +15,6 @@ class Cart(BaseModel, Base):
     cartItems = relationship("CartItems", cascade="all, delete")
 
 
-
 class CartItems(BaseModel, Base):
     """This class stores information about orders placed"""
 

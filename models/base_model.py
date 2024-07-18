@@ -8,7 +8,6 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 
-
 class BaseModel:
     """Represents the entry point for all other classes"""
 
@@ -41,12 +40,14 @@ class BaseModel:
     def save(self):
         """Saves an Object"""
         from models.engine.storage import Storage
+
         storage = Storage()
         storage.add(self)
 
     def delete(self):
         """Deletes an object"""
         from models.engine.storage import Storage
+
         storage = Storage()
         storage.delete(self)
 

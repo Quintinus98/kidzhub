@@ -15,11 +15,11 @@ from api.v1.views import app_views
 
 AUTH = Auth()
 
+
 @app_views.route("/", methods=["GET"])
 def home():
     """Home route"""
     return jsonify({"message": "Bienvenue"})
-
 
 
 @app_views.route("/getusers", methods=["GET"])
@@ -39,11 +39,13 @@ def users():
     except ValueError:
         return jsonify({"message": "email already registered"}), 400
 
+
 # Get user profile via user id
-@app_views.route("/users/:id", methods=["POST"])
+@app_views.route("/users/<id>", methods=["POST"])
 def user(id: str):
     """Get profile"""
     pass
+
 
 # Update a user profile via session_id
 @app_views.route("/users", methods=["PUT"])
@@ -58,6 +60,7 @@ def updateProfile():
     data = request.form
     AUTH.update_user(data, user)
     return make_response(jsonify({"message": "user updated"}), 201)
+
 
 # Delete a user profile via session_id
 @app_views.route("/users", methods=["DELETE"])
