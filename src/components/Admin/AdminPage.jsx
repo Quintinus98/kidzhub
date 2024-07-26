@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductList from './ProductList';
 import ProductForm from './ProductForm';
+import NavBar2 from '../Navbar/NavBar2';
 
 export const endpoint = "http://localhost:5000"
 
@@ -37,17 +38,21 @@ const AdminPage = () => {
   };
 
   return (
-    <div className='w-full px-4 sm:px-0 mx-auto'>
-      <h1 className='font-bold w-full text-center text-3xl'>Admin Products Page</h1>
-      <p className='text-center text-xl mt-4'>Create a Product</p>
-      <ProductForm
-        product={editingProduct}
-      />
-      <ProductList
-        products={products}
-        onEdit={handleEditProduct}
-        onDelete={handleDeleteProduct}
-      />
+    <div>
+        <NavBar2 />
+        <div className='py-20'></div>
+        <div className='w-full px-4 sm:px-0 mx-auto'>
+        <h1 className='font-bold w-full text-center text-3xl'>Admin Products Page</h1>
+        <p className='text-center text-xl mt-4'>Create a Product</p>
+        <ProductForm
+            product={editingProduct}
+        />
+        <ProductList
+            products={products}
+            onEdit={handleEditProduct}
+            onDelete={handleDeleteProduct}
+        />
+        </div>
     </div>
   );
 };

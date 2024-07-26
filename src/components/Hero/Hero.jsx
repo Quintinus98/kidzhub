@@ -8,7 +8,7 @@ const Hero = () => {
     <div className="hero">
       <div className="hero-left">
         <h2>NEW ARRIVALS ONLY</h2>
-        <div>
+        <div className='flex flex-col items-center'>
           <p>New collection</p>
           <p>For everyone</p>
           <div className="hero-latest-btn">

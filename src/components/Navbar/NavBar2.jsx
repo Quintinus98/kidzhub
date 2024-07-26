@@ -1,83 +1,81 @@
 import React, { useContext, useState } from 'react';
-import './NavBar.css';
+// import './NavBar.css';
 import { Link } from 'react-router-dom';
 import IMG1 from '../../assets/IMG1.png';
+import cart from '../../assets/cart.png';
 import { ShopContext } from '../ShopContext';
-// import cart from '../../assets/cart.png';
 
-const NavBar = () => {
-  const [menu, setMenu] = useState('shop');
+const NavBar2 = () => {
+  const [menu, setMenu] = useState('');
   const { getTotalCartItems } = useContext(ShopContext);
 
-//   return (
-//     <div className="navbar">
-//       <div className="nav-logo">
-//         <img src={IMG1} alt="" />
-//         <p>KIDZHUB</p>
-//       </div>
-//       <ul className="nav-menu">
-//         <li
-//           onClick={() => {
-//             setMenu('shop');
-//           }}
-//         >
-//           <Link style={{ textDecoration: 'none' }} to="/">
-//             Shop
-//           </Link>{' '}
-//           {menu === 'shop' ? <hr /> : <></>}
-//         </li>
-//         <li
-//           onClick={() => {
-//             setMenu('boys');
-//           }}
-//         >
-//           <Link style={{ textDecoration: 'none' }} to="/boys">
-//             Boys
-//           </Link>
-//           {menu === 'boys' ? <hr /> : <></>}
-//         </li>
-//         <li
-//           onClick={() => {
-//             setMenu('girls');
-//           }}
-//         >
-//           <Link style={{ textDecoration: 'none' }} to="/girls">
-//             Girls
-//           </Link>
-//           {menu === 'girls' ? <hr /> : <></>}
-//         </li>
-//         <li
-//           onClick={() => {
-//             setMenu('casuals');
-//           }}
-//         >
-//           {' '}
-//           <Link style={{ textDecoration: 'none' }} to="/casuals">
-//             Casuals
-//           </Link>
-//           {menu === 'casuals' ? <hr /> : <></>}
-//         </li>
-//       </ul>
-//       <div className="nav-login-cart">
-//         <Link style={{ textDecoration: 'none' }} to="/login">
-//           <button>login</button>
-//         </Link>
-//         <Link style={{ textDecoration: 'none' }} to="/cart">
-//           <img src={cart} alt="" />
-//         </Link>
-//         <div className="nav-cart-count">{getTotalCartItems()}</div>
-//       </div>
-//       <div className="customrequest">
-//         <Link style={{ textDecoration: 'none' }} to="/request">
-//           Make a Custom Request
-//         </Link>
-//       </div>
-//     </div>
-//   );
+  // <div classNameName="navbar">
+  //   <div classNameName="nav-logo">
+  //     <img src={IMG1} alt="" />
+  //     <p>KIDZHUB</p>
+  //   </div>
+  //   <ul classNameName="nav-menu">
+  //     <li
+  //       onClick={() => {
+  //         setMenu('shop');
+  //       }}
+  //     >
+  //       <Link style={{ textDecoration: 'none' }} to="/">
+  //         Shop
+  //       </Link>{' '}
+  //       {menu === 'shop' ? <hr /> : <></>}
+  //     </li>
+  //     <li
+  //       onClick={() => {
+  //         setMenu('boys');
+  //       }}
+  //     >
+  //       <Link style={{ textDecoration: 'none' }} to="/boys">
+  //         Boys
+  //       </Link>
+  //       {menu === 'boys' ? <hr /> : <></>}
+  //     </li>
+  //     <li
+  //       onClick={() => {
+  //         setMenu('girls');
+  //       }}
+  //     >
+  //       <Link style={{ textDecoration: 'none' }} to="/girls">
+  //         Girls
+  //       </Link>
+  //       {menu === 'girls' ? <hr /> : <></>}
+  //     </li>
+  //     <li
+  //       onClick={() => {
+  //         setMenu('casuals');
+  //       }}
+  //     >
+  //       {' '}
+  //       <Link style={{ textDecoration: 'none' }} to="/casuals">
+  //         Casuals
+  //       </Link>
+  //       {menu === 'casuals' ? <hr /> : <></>}
+  //     </li>
+  //   </ul>
+  //   <div classNameName="nav-login-cart">
+  //     <Link style={{ textDecoration: 'none' }} to="/login">
+  //       <button>login</button>
+  //     </Link>
+  //     <Link style={{ textDecoration: 'none' }} to="/cart">
+  //       <img src={cart} alt="" />
+  //     </Link>
+  //     <div classNameName="nav-cart-count">{getTotalCartItems()}</div>
+  //   </div>
+  //   <div classNameName="customrequest">
+  //     <Link style={{ textDecoration: 'none' }} to="/request">
+  //       Make a Custom Request
+  //     </Link>
+  //   </div>
+  // </div>
   return (
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+            <Link to="/shop" className="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src={IMG1} className="h-20" alt="Flowbite Logo" />
                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">KIDZHUB</span>
             </Link>
@@ -133,5 +131,4 @@ const NavBar = () => {
     </nav>
   );
 };
-
-export default NavBar;
+export default NavBar2;
