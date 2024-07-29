@@ -11,7 +11,7 @@ import ShopProvider from './components/ShopContext';
 import CustomRequest from './components/CustomRequest/CustomRequest';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import CheckOut from './pages/CheckOutPage/CheckOut';
-import ProfilePage from './components/ProfilePage/ProfilePage';
+import AdminPage from './components/Admin/AdminPage';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
         <Route path="/request" element={<CustomRequest />} />
         <Route path="/password" element={<ForgotPassword />} />
         <Route path="/checkout" element={<CheckOut />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/admin/products" element={<AdminPage />} />
       </Routes>
     </ShopProvider>
   );
