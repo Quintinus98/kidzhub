@@ -1,5 +1,4 @@
 import React from 'react';
-import './Breadcrum.css';
 import arrow_icon from '../../assets/arrow-icon.png';
 import { Link } from 'react-router-dom';
 
@@ -17,19 +16,19 @@ const Breadcrum = (props) => {
   };
 
   return (
-    <div className="breadcrum">
+    <div className="flex items-center gap-3 text-white font-semibold mx-4">
       <Link style={{ textDecoration: 'none' }} to="/">
         HOME
       </Link>
-      <img src={arrow_icon} alt="" />
+      <img src={arrow_icon} alt="" className=" h-5 w-5" />
       <Link style={{ textDecoration: 'none' }} to="/">
         SHOP
       </Link>
-      <img src={arrow_icon} alt="" />
+      <img src={arrow_icon} alt="" className="h-5 w-5" />
       <Link style={{ textDecoration: 'none' }} to={getLink(product.category)}>
         {product.category}
       </Link>
-      <img src={arrow_icon} alt="" /> {product.name}
+      <img src={arrow_icon} alt="" className=" h-5 w-5" /> {product.name}
     </div>
   );
 };

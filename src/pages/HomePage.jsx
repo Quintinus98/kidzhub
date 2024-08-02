@@ -1,9 +1,9 @@
 import React from 'react';
-import NavBar from '../components/Navbar/NavBar';
-import Footer from '../components/Footer/Footer';
-import Hero from '../components/Hero/Hero';
-import Popular from '../components/Popular/Popular';
-import Newsletter from '../components/Newsletter/Newsletter';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+import Hero from '../components/Hero';
+import Popular from '../components/Popular';
+import Newsletter from '../components/Newsletter';
 
 const HomePage = () => {
   return (

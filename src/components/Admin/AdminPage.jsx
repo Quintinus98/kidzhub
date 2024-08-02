@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductList from './ProductList';
 import ProductForm from './ProductForm';
-import NavBar2 from '../Navbar/NavBar2';
+import NavBar from '../NavBar';
 
 export const endpoint = 'http://localhost:5000';
 
@@ -38,7 +38,7 @@ const AdminPage = () => {
 
   return (
     <div>
-      <NavBar2 />
+      <NavBar />
       <div className="py-20"></div>
       <div className="w-full px-4 sm:px-0 mx-auto">
         <h1 className="font-bold w-full text-center text-3xl">

@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import './Cart.css';
 import CartItems from '../CartItems/CartItems';
 import { ShopContext } from '../ShopContext';
-import NavBar from '../Navbar/NavBar';
-import Footer from '../Footer/Footer';
+import NavBar from '../NavBar';
+import Footer from '../Footer';
 
 const Cart = () => {
   const { cartItems } = useContext(ShopContext);

@@ -1,11 +1,10 @@
 import React from 'react';
-// import './Hero.css';
-import Img2 from '../../assets/web_new.jpg';
-import arrow from '../../assets/arrow.png';
+import Img2 from '../assets/web_new.jpg';
+import arrow from '../assets/arrow.png';
 
 const Hero = () => {
   return (
-    <div className=" flex md:flex-row flex-col items-center w-full md:h-screen mt-16 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-600">
+    <div className=" flex md:flex-row flex-col items-center w-full md:h-screen mt-navbar bg-white dark:bg-gray-700 border-b border-gray-200 ">
       <div className="md:flex-1 flex justify-center md:justify-start flex-col px-4">
         <h2 className="text-red-600 text-5xl font-semibold text-center md:text-left">
           NEW ARRIVALS ONLY

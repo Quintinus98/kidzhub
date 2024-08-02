@@ -1,7 +1,7 @@
 import React from 'react';
 import './CustomRequest.css';
-import NavBar from '../Navbar/NavBar';
-import Footer from '../Footer/Footer';
+import NavBar from '../NavBar';
+import Footer from '../Footer';
 
 const CustomRequest = () => {
   return (

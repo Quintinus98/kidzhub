@@ -1,9 +1,9 @@
 import React from 'react';
 import './ShopCategory.css';
 import { useContext } from 'react';
-import Item from '../../components/Items/Item';
-import NavBar from '../../components/Navbar/NavBar';
-import Footer from '../../components/Footer/Footer';
+import Item from '../../components/Item';
+import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
 import { ShopContext } from '../ShopContext';
 
 const ShopCategory = (props) => {

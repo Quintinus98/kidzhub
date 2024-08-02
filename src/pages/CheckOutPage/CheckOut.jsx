@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import './CheckOut.css';
 import { ShopContext } from '../../components/ShopContext';
-import NavBar from '../../components/Navbar/NavBar';
-import Footer from '../../components/Footer/Footer';
+import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
 
 const CheckOut = () => {
   const { cartItems, all_product, getTotalCartAmount } =

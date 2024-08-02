@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-// import './NavBar.css';
 import { Link } from 'react-router-dom';
 // import IMG1 from '../../assets/IMG1.png';
-import { ShopContext } from '../ShopContext';
-import IMG1 from '../../assets/loo.jpg';
+import { ShopContext } from './ShopContext';
+import IMG1 from '../assets/loo.jpg';
 
 const NavBar = () => {
   const [menu, setMenu] = useState('shop');
@@ -22,9 +21,28 @@ const NavBar = () => {
     handleWindowSizeChange();
     return () => window.removeEventListener('resize', handleWindowSizeChange);
   }, []);
+  useEffect(() => {
+    const updateNavbarHeight = () => {
+      const navbar = document.getElementById('navbar');
+      if (navbar) {
+        const height = navbar.offsetHeight;
+        document.documentElement.style.setProperty(
+          '--navbar-height',
+          `${height}px`
+        );
+      }
+    };
+    updateNavbarHeight();
+    window.addEventListener('resize', updateNavbarHeight);
+
+    return () => window.removeEventListener('resize', updateNavbarHeight);
+  }, []);
 
   return (
-    <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+    <nav
+      id="navbar"
+      className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
+    >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           to="/"

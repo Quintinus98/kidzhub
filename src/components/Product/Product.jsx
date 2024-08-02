@@ -3,8 +3,8 @@ import './Product.css';
 import { ShopContext } from '../ShopContext';
 import { useParams } from 'react-router-dom';
 import Breadcrum from '../Breadcrum/Breadcrum';
-import NavBar from '../Navbar/NavBar';
-import Footer from '../Footer/Footer';
+import NavBar from '../NavBar';
+import Footer from '../Footer';
 import ProductDisplay from '../ProductDisplay/ProductDisplay';
 
 const Product = () => {
@@ -23,7 +23,7 @@ const Product = () => {
   return (
     <div>
       <NavBar />
-      <div>
+      <div className="dark:bg-gray-700 mt-navbar">
         <Breadcrum product={product} />
         <ProductDisplay product={product} />
       </div>
