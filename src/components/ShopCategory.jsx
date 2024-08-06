@@ -1,5 +1,4 @@
 import React from 'react';
-// import './ShopCategory.css';
 import { useContext } from 'react';
 import Item from './Item';
 import NavBar from './NavBar';
@@ -11,11 +10,8 @@ const ShopCategory = (props) => {
   return (
     <div>
       <NavBar />
-      <div className="shop-category">
-        <div
-          className="flex gap-y-5 flex-wrap items-center justify-center ml-10 m-5;
-"
-        >
+      <div className="mt-navbar">
+        <div className="flex gap-y-7 flex-wrap items-center justify-center ml-10 m-5 text-wrap">
           {all_product.map((item, i) => {
             if (props.category === item.category) {
               return (

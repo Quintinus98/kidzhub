@@ -41,7 +41,7 @@ const ProductDisplay = ({ product }) => {
 
   return (
     <div>
-      <div className="flex flex-wrap m-2.5 mt-8 ">
+      <div className="flex flex-wrap m-2.5 mt-navbar ">
         <div className="flex gap-4 flex-1">
           <div className="flex flex-col gap-2">
             <img

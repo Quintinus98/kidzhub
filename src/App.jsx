@@ -10,8 +10,9 @@ import ContactPage from './pages/ContactPage/ContactPage';
 import ShopProvider from './components/ShopContext';
 import CustomRequest from './components/CustomRequest/CustomRequest';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
-import CheckOut from './pages/CheckOutPage/CheckOut';
+import CheckOut from './pages/CheckOut';
 import AdminPage from './components/Admin/AdminPage';
+import ProfilePage from './components/ProfilePage';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/password" element={<ForgotPassword />} />
         <Route path="/checkout" element={<CheckOut />} />
         <Route path="/admin/products" element={<AdminPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </ShopProvider>
   );

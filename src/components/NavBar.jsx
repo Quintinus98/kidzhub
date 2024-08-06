@@ -209,6 +209,13 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
+              <Link style={{ textDecoration: 'none' }} to="/profile">
+                <button class="bg-transparent hover:bg-blue-500 text-blue-700 py-1 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded">
+                  Hi, Jane
+                </button>
+              </Link>
+            </li>
+            <li>
               <Link to="/cart">
                 <div className="relative py-2">
                   <div className="t-0 absolute left-3">
