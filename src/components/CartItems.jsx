@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import './CartItems.css';
-import { ShopContext } from '../ShopContext';
-import remove_icon from '../../assets/remove_icon.png';
+import { ShopContext } from './ShopContext';
+import remove_icon from '../assets/remove_icon.png';
 import { Link } from 'react-router-dom';
 
 const CartItems = () => {
@@ -21,9 +20,9 @@ const CartItems = () => {
 
   return (
     <div>
-      <div className="cartitems">
-        <div className="cartitems-container">
-          <div className="cartitems-format-main">
+      <div className="mx-[150px] my-[100px]">
+        <div className="flex flex-wrap flex-row flex-1 m-2.5">
+          <div className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1fr] items-center gap-[75px] text-[#454545] text-lg font-semibold px-0 py-5">
             <p>Products</p>
             <p>Title</p>
             <p>Price</p>
@@ -31,7 +30,7 @@ const CartItems = () => {
             <p>Total</p>
             <p>Remove</p>
           </div>
-          <hr />
+          <hr className="h-[3px] border-0 bg-#2e2e2e" />
           {all_product.map((product) => {
             if (cartItems[product.id] > 0) {
               const selectedSize = selectedSizes[product.id];
@@ -39,19 +38,19 @@ const CartItems = () => {
               const totalItemPrice = price * cartItems[product.id];
               return (
                 <div key={product.id}>
-                  <div className="cartitems-format cartitems-format-main">
+                  <div className="text-[17px] grid grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1fr] items-center gap-[75px] text-[#454545] text-lg font-semibold px-0 py-5">
                     <img
                       src={selectedImages[product.id]}
                       alt=""
-                      className="carticon-product-icon"
+                      className="h-[150px] w-[130px]"
                     />
                     <p>{product.name}</p>
                     <p>#{price}</p>
-                    <button className="cartitems-quantity">
+                    <button className="w-16 h-[50px] border-2 border-solid border-[#ebebeb] bg-#fff">
                       {cartItems[product.id]}
                     </button>
                     <p> #{totalItemPrice} </p>
-                    <div className="cartitems-remove-icon">
+                    <div className="w-[15px] cursor-pointer mx-10 my-0">
                       <img
                         src={remove_icon}
                         onClick={() => {
@@ -67,24 +66,24 @@ const CartItems = () => {
             }
             return null;
           })}
-          <div className="cartitems-down">
-            <div className="cartitems-total">
+          <div className="flex justify-center flex-1 flex-wrap flex-row mx-0 my-[100px]">
+            <div className="flex-1 flex flex-col gap-10 mr-[200px]">
               <h1> Cart Total</h1>
-              <div className="cartitems-total-item">
+              <div className="flex justify-between px-0 py-[15px]">
                 <p>Subtotal</p>
                 <p>#{totalCartAmount}</p>
               </div>
               <hr />
-              <div className="cartitems-total-item">
+              <div className="flex justify-between px-0 py-[15px]">
                 <p>Shipping Fee</p>
                 <p>Free</p>
               </div>
               <hr />
-              <div className="cartitems-total-item">
+              <div className="flex justify-between px-0 py-[15px]">
                 <h3>Total</h3>
                 <h3>#{totalCartAmount.toFixed(2)}</h3>
               </div>
-              <button>
+              <button className="w-[262px] h-[58px] text-white font-semibold cursor-pointer border-[none] outline-none bg-#ff5a5a">
                 <Link
                   style={{ textDecoration: 'none' }}
                   to="/checkout"

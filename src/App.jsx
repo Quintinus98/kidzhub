@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Homepage from './pages/HomePage';
-import ShopCategory from './components/ShopCategory/ShopCategory';
-import Product from './components/Product/Product';
+import ShopCategory from './components/ShopCategory';
+import Product from './components/Product';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
-import Cart from './components/Cart/Cart';
+import Cart from './components/Cart';
 import ContactPage from './pages/ContactPage/ContactPage';
 import ShopProvider from './components/ShopContext';
 import CustomRequest from './components/CustomRequest/CustomRequest';

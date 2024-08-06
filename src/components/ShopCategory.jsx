@@ -1,10 +1,10 @@
 import React from 'react';
-import './ShopCategory.css';
+// import './ShopCategory.css';
 import { useContext } from 'react';
-import Item from '../../components/Item';
-import NavBar from '../../components/NavBar';
-import Footer from '../../components/Footer';
-import { ShopContext } from '../ShopContext';
+import Item from './Item';
+import NavBar from './NavBar';
+import Footer from './Footer';
+import { ShopContext } from './ShopContext';
 
 const ShopCategory = (props) => {
   const { all_product } = useContext(ShopContext);
@@ -12,7 +12,10 @@ const ShopCategory = (props) => {
     <div>
       <NavBar />
       <div className="shop-category">
-        <div className="shopCategory-products">
+        <div
+          className="flex gap-y-5 flex-wrap items-center justify-center ml-10 m-5;
+"
+        >
           {all_product.map((item, i) => {
             if (props.category === item.category) {
               return (

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import IMG1 from '../../assets/IMG1.png';
+import IMG1 from '../assets/IMG1.png';
 import { ShopContext } from './ShopContext';
-import IMG1 from '../assets/loo.jpg';
+// import IMG1 from '../assets/loo.jpg';
 
 const NavBar = () => {
   const [menu, setMenu] = useState('shop');
@@ -50,7 +50,7 @@ const NavBar = () => {
         >
           <img src={IMG1} className="h-20 rounded-lg" alt="Flowbite Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white ">
-            Deonwearables
+            Kidzhub
           </span>
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">

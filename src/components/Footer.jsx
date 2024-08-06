@@ -1,6 +1,6 @@
 import React from 'react';
-// import IMG from '../../assets/IMG1.png';
-import IMG from '../assets/loo.jpg';
+import IMG from '../assets/IMG1.png';
+// import IMG from '../assets/loo.jpg';
 import facebook_logo from '../assets/facebook_logo.jpg';
 import insta_logo from '../assets/insta.jpg';
 import whatsapp_logo from '../assets/whatsapp_logo.png';
@@ -12,14 +12,14 @@ const Footer = () => {
   };
 
   return (
-    <div className=" dark:bg-gray-700 flex flex-col justify-center items-center gap-10">
-      <div className="flex items-center gap-5 mt-5">
+    <div className=" dark:bg-gray-600 flex flex-col justify-center items-center gap-10">
+      <div className="flex items-center gap-5 mt-10">
         <Link style={{ textDecoration: 'none' }} to="/">
           <img src={IMG} alt="" className="h-20 rounded-lg" />
         </Link>
         <Link style={{ textDecoration: 'none' }} to="/">
           <p className="self-baseline text-4xl font-semibold whitespace-nowrap dark:text-white">
-            Deonwearables
+            Kidzhub
           </p>
         </Link>
       </div>

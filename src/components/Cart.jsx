@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-import './Cart.css';
-import CartItems from '../CartItems/CartItems';
-import { ShopContext } from '../ShopContext';
-import NavBar from '../NavBar';
-import Footer from '../Footer';
+import CartItems from './CartItems';
+import { ShopContext } from './ShopContext';
+import NavBar from './NavBar';
+import Footer from './Footer';
 
 const Cart = () => {
   const { cartItems } = useContext(ShopContext);
@@ -14,8 +13,10 @@ const Cart = () => {
     <div>
       <NavBar />
       {isEmptyCart ? (
-        <div className="empty-cart">
-          <h2>Nothing added to cart. Start shopping!</h2>
+        <div className="mt-navbar dark:bg-gray-700 border-b ">
+          <h2 className="font-extrabold text-lg mb-5">
+            Nothing added to cart. Start shopping!
+          </h2>
         </div>
       ) : (
         <CartItems />

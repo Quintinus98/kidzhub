@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-import './Product.css';
-import { ShopContext } from '../ShopContext';
+import { ShopContext } from './ShopContext';
 import { useParams } from 'react-router-dom';
-import Breadcrum from '../Breadcrum/Breadcrum';
-import NavBar from '../NavBar';
-import Footer from '../Footer';
-import ProductDisplay from '../ProductDisplay/ProductDisplay';
+import Breadcrum from './Breadcrum';
+import NavBar from './NavBar';
+import Footer from './Footer';
+import ProductDisplay from './ProductDisplay';
 
 const Product = () => {
   const { all_product } = useContext(ShopContext);

@@ -1,5 +1,5 @@
 import React from 'react';
-import arrow_icon from '../../assets/arrow-icon.png';
+import arrow_icon from '../assets/arrow-icon.png';
 import { Link } from 'react-router-dom';
 
 const Breadcrum = (props) => {
