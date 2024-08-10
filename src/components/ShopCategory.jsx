@@ -10,8 +10,8 @@ const ShopCategory = (props) => {
   return (
     <div>
       <NavBar />
-      <div className="mt-navbar">
-        <div className="flex gap-y-7 flex-wrap items-center justify-center ml-10 m-5 text-wrap">
+      <div className="mt-navbar bg-gray-500">
+        <div className="flex flex-wrap items-center justify-center text-wrap">
           {all_product.map((item, i) => {
             if (props.category === item.category) {
               return (
