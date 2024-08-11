@@ -1,5 +1,4 @@
 import React from 'react';
-// import './CustomRequest.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
 

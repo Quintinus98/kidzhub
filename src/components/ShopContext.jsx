@@ -82,6 +82,21 @@ const ShopProvider = (props) => {
     }
     return totalItem;
   };
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [phoneNumber1, setPhoneNumber1] = useState('');
+  const [phoneNumber2, setPhoneNumber2] = useState('');
+  const [countryCode1, setCountryCode1] = useState('+234');
+  const [countryCode2, setCountryCode2] = useState('+234');
+  const [selectedImage, setSelectedImage] = useState(null);
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedImage(URL.createObjectURL(file));
+  };
 
   const contextValue = {
     getTotalCartItems,
@@ -93,6 +108,28 @@ const ShopProvider = (props) => {
     selectedImages,
     selectedSizes,
     updateSelectedSize,
+    firstname,
+    setFirstname,
+    lastname,
+    setLastname,
+    email,
+    setEmail,
+    address,
+    setAddress,
+    city,
+    setCity,
+    state,
+    setState,
+    phoneNumber1,
+    setPhoneNumber1,
+    phoneNumber2,
+    setPhoneNumber2,
+    countryCode1,
+    setCountryCode1,
+    countryCode2,
+    setCountryCode2,
+    selectedImage,
+    handleFileChange,
   };
 
   return (

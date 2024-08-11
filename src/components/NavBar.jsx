@@ -6,7 +6,7 @@ import { ShopContext } from './ShopContext';
 
 const NavBar = () => {
   const [menu, setMenu] = useState('shop');
-  const { getTotalCartItems } = useContext(ShopContext);
+  const { getTotalCartItems, firstname } = useContext(ShopContext);
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -81,7 +81,7 @@ const NavBar = () => {
                 stroke="currentColor"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="2"
+                stroke-Width="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
@@ -211,7 +211,7 @@ const NavBar = () => {
             <li>
               <Link style={{ textDecoration: 'none' }} to="/profile">
                 <button class="bg-transparent hover:bg-blue-500 text-blue-700 py-1 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded">
-                  Hi, Jane
+                  Hi, {firstname || 'John'}
                 </button>
               </Link>
             </li>
