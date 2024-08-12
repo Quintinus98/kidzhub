@@ -33,7 +33,7 @@ const ProfilePage = () => {
   return (
     <div>
       <NavBar />
-      <div className="flex items-center justify-center flex-wrap box-border p-5 bg-pink-100 mt-navbar gap-3">
+      <div className="flex items-center justify-center flex-wrap box-border p-5 bg-gray-300 mt-navbar gap-3">
         <div className="flex w-full justify-center flex-wrap gap-3">
           <div className="flex flex-grow flex-row justify-between items-stretch p-4 rounded-lg bg-white border-double border-4 border-blue-800 min-h-64">
             <div className="flex flex-grow flex-col justify-between">
@@ -42,7 +42,7 @@ const ProfilePage = () => {
               </h2>
               <hr className="border-t-3 border-gray-900 mb-5 mt-1" />
               <img
-                className="w-32 h-32 object-cover rounded-full self-center"
+                className="w-40 h-40 object-cover rounded-full self-center"
                 src={selectedImage || profile}
                 alt="Profile"
               />
