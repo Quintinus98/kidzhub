@@ -13,7 +13,8 @@ from flask import (
 from api.auth.auth import Auth
 from models.engine.storage import Storage
 from api.v1.views import app_views
-from models.product import Product, Image
+from models.product import Product, Image, Price
+from models.category import Category, Tag
 from sqlalchemy.exc import NoResultFound
 import os
 from werkzeug.utils import secure_filename
@@ -72,11 +73,17 @@ def create_product():
         tmp = {
             "name": data["name"],
             "description": data["description"],
-            "price": data["price"],
-            "quantity": data["quantity"],
+            "sold": data["sold"],
+            "discount": data["discount"],
         }
+        pr_tmp = {"price": data["price"]}
+        cat_tmp = {"category": data["category"]}
+        tag_tmp = {"tag": data["tag"]}
+
         product = Product(**tmp)
         db.add(product)
+        db.add(Category(category=data["category"]), product_id=product.id)
+        db.add(Tag(**tag_tmp))
 
         for image in images:
             if image and allowed_file(image.filename):
@@ -99,14 +106,19 @@ def get_product(id):
     if product is None:
         return jsonify({"error": "No product found"})
 
-    return jsonify({
-        'id': product.id,
-        'name': product.name,
-        'description': product.description,
-        'images': [image.url for image in product.images],
-        'price': product.price,
-        'quantity': product.quantity
-    }), 200
+    return (
+        jsonify(
+            {
+                "id": product.id,
+                "name": product.name,
+                "description": product.description,
+                "images": [image.url for image in product.images],
+                "price": product.price,
+                "quantity": product.quantity,
+            }
+        ),
+        200,
+    )
 
 
 @app_views.route("/products/<id>", methods=["PUT"])
@@ -115,7 +127,7 @@ def update_product(id):
     product = db._session.query(Product).filter_by(id=id).first()
     if product is None:
         return jsonify({"error": "No product found"})
-    
+
     images = request.files.getlist("images")
     if images:
         return jsonify({"error": "Cannot update images"})
@@ -139,7 +151,7 @@ def delete_product(id):
         product = db._session.query(Product).filter_by(id=id).first()
     except NoResultFound:
         return jsonify({"message": "Product Unavailable"})
-    
+
     images = [image.url for image in product.images]
     for image in images:
         if os.path.isfile(image):
