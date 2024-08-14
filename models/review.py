@@ -12,5 +12,6 @@ class Review(BaseModel, Base):
 
     user_id = Column(String(60), ForeignKey("users.id"))
     product_id = Column(String(60), ForeignKey("products.id"))
+    orderitems_id = Column(String(60), ForeignKey("orderitems.id"))
     rating = Column(Integer())
     comment = Column(Text())
