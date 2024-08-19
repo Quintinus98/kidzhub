@@ -18,7 +18,6 @@ class Product(BaseModel, Base):
     discount = Column(Integer(), nullable=False, default=0)
     price = relationship("Price", cascade="all, delete")
     category = relationship("Category", cascade="all, delete")
-    tag = relationship("Tag", cascade="all, delete")
     images = relationship("Image", cascade="all, delete")
 
     def __repr__(self) -> str:

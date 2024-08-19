@@ -16,15 +16,3 @@ class Category(BaseModel, Base):
 
     def __repr__(self) -> str:
         return f"<Category {self.id}: {self.category}>"
-
-
-class Tag(BaseModel, Base):
-    """This class stores information about product tags"""
-
-    __tablename__ = "tags"
-
-    product_tags = Column(String(255), nullable=False)
-    product_id = Column(String(60), ForeignKey("products.id"), nullable=False)
-
-    def __repr__(self) -> str:
-        return f"<Tag {self.id}: {self.product_tags}>"

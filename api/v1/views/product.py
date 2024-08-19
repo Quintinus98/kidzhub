@@ -2,19 +2,15 @@
 """User API"""
 # from flask import request, abort, jsonify, make_response
 from flask import (
-    Flask,
     request,
     jsonify,
-    abort,
     make_response,
-    url_for,
-    redirect,
 )
 from api.auth.auth import Auth
 from models.engine.storage import Storage
 from api.v1.views import app_views
 from models.product import Product, Image, Price
-from models.category import Category, Tag
+from models.category import Category
 from sqlalchemy.exc import NoResultFound
 import os
 from werkzeug.utils import secure_filename
@@ -68,7 +64,6 @@ def create_product():
         "sold",
         "discount",
         "category",
-        "tag",
     ]
     if set(keys) > set(data.keys()):
         return jsonify({"error": f"Incomplete details"})
@@ -103,7 +98,6 @@ def create_product():
         db.add(product)
 
         db.add(Category(category=data["category"], product_id=product.id))
-        db.add(Tag(product_tags=data["tag"], product_id=product.id))
 
         tmp2["product_id"] = product.id
         db.add(Price(**tmp2))
@@ -146,9 +140,6 @@ def get_product(id):
                 "category": "".join(
                     [category.category for category in product.category]
                 ),
-                "tag": "".join(
-                    [tag.product_tags for tag in product.tag]
-                ).split(" ,"),
             }
         ),
         200,
