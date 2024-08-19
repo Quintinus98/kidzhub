@@ -15,7 +15,7 @@ class Category(BaseModel, Base):
     product_id = Column(String(60), ForeignKey("products.id"), nullable=False)
 
     def __repr__(self) -> str:
-        return f"<Category {self.id}: {self.name}>"
+        return f"<Category {self.id}: {self.category}>"
 
 
 class Tag(BaseModel, Base):

@@ -137,9 +137,16 @@ class Storage:
                 return value
         return None
 
+    def get_by_kwargs(self, cls, **kwargs):
+        """Get a model by key word"""
+        if len(kwargs) != 1:
+            return None
+        obj = self._session.query(cls).filter_by(**kwargs).first()
+        return obj
+
     def get_user(self, email) -> dict:
         """Get's a user from it's email"""
-        obj = self.__session.query(User).filter_by(email=email).first()
+        obj = self._session.query(User).filter_by(email=email).first()
         if obj:
             return obj.to_dict()
         return {}

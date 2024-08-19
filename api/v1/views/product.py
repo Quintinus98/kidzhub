@@ -62,8 +62,15 @@ def all_products():
 def create_product():
     """End-point to register a product"""
     data = request.form
-    keys = ["name", "description", "price", "quantity"]
-    if keys != list(data.keys()):
+    keys = [
+        "name",
+        "description",
+        "sold",
+        "discount",
+        "category",
+        "tag",
+    ]
+    if set(keys) > set(data.keys()):
         return jsonify({"error": f"Incomplete details"})
     images = request.files.getlist("images")
     if not images:
@@ -76,14 +83,30 @@ def create_product():
             "sold": data["sold"],
             "discount": data["discount"],
         }
-        pr_tmp = {"price": data["price"]}
-        cat_tmp = {"category": data["category"]}
-        tag_tmp = {"tag": data["tag"]}
+
+        tmp2 = {
+            "XS": data.get("XS", -1, type=int),
+            "S": data.get("S", -1, type=int),
+            "M": data.get("M", -1, type=int),
+            "L": data.get("L", -1, type=int),
+            "XL": data.get("XL", -1, type=int),
+            "XXL": data.get("XLL", -1, type=int),
+        }
+        truthy = False
+        for val in tmp2.values():
+            if val > 0:
+                truthy = True
+        if not truthy:
+            raise ValueError
 
         product = Product(**tmp)
         db.add(product)
-        db.add(Category(category=data["category"]), product_id=product.id)
-        db.add(Tag(**tag_tmp))
+
+        db.add(Category(category=data["category"], product_id=product.id))
+        db.add(Tag(product_tags=data["tag"], product_id=product.id))
+
+        tmp2["product_id"] = product.id
+        db.add(Price(**tmp2))
 
         for image in images:
             if image and allowed_file(image.filename):
@@ -102,9 +125,13 @@ def create_product():
 def get_product(id):
     """Get a product if it exists"""
 
-    product = db._session.query(Product).filter_by(id=id).first()
+    product = db.get_by_kwargs(Product, id=id)
     if product is None:
         return jsonify({"error": "No product found"})
+
+    price = db.get_by_kwargs(Price, product_id=product.id).to_dict()
+    keys = ["L", "M", "S", "XL", "XS", "XXL"]
+    display = {k: v for k, v in price.items() if k in keys and v != -1}
 
     return (
         jsonify(
@@ -113,8 +140,15 @@ def get_product(id):
                 "name": product.name,
                 "description": product.description,
                 "images": [image.url for image in product.images],
-                "price": product.price,
-                "quantity": product.quantity,
+                "price": display,
+                "sold": product.sold,
+                "discount": product.discount,
+                "category": "".join(
+                    [category.category for category in product.category]
+                ),
+                "tag": "".join(
+                    [tag.product_tags for tag in product.tag]
+                ).split(" ,"),
             }
         ),
         200,
