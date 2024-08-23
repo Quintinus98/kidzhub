@@ -1,5 +1,5 @@
 import React from 'react';
-import data_product from '../data';
+import all_products from '../all_products';
 import Item from './Item';
 
 const Popular = () => {
@@ -16,7 +16,7 @@ const Popular = () => {
         className="flex gap-10 flex-wrap items-center justify-center mt-20;
 "
       >
-        {data_product.map((item, i) => {
+        {all_products.map((item, i) => {
           return (
             <Item
               key={i}
