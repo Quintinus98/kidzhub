@@ -11,23 +11,26 @@ from models.base_model import Base
 
 from models.user import User
 from models.address import Address
-from models.cart import Cart, CartItems
+from models.cart import CartItems
+
 from models.order import Order, OrderItems
 from models.payment import Payment
-from models.product import Product
+from models.product import Product, Price
 from models.review import Review
+from models.category import Category
 
 
 classes = {
     "User": User,
     "Address": Address,
-    "Cart": Cart,
     "CartItems": CartItems,
     "Order": Order,
     "OrderItems": OrderItems,
     "Payment": Payment,
     "Product": Product,
     "Review": Review,
+    "Price": Price,
+    "Category": Category,
 }
 
 
@@ -139,11 +142,20 @@ class Storage:
 
     def get_by_kwargs(self, cls, **kwargs):
         """Get a model by key word"""
-        if len(kwargs) != 1:
+        if len(kwargs) < 1:
             return None
         if isinstance(cls, str):
             cls = classes[cls]
         obj = self._session.query(cls).filter_by(**kwargs).first()
+        return obj
+
+    def get_all_by_kwargs(self, cls, **kwargs) -> list:
+        """Get a model by key word"""
+        if len(kwargs) != 1:
+            return None
+        if isinstance(cls, str):
+            cls = classes[cls]
+        obj = self._session.query(cls).filter_by(**kwargs).all()
         return obj
 
     def get_user(self, email) -> dict:

@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """User API"""
-# from flask import request, abort, jsonify, make_response
 from flask import (
     request,
     jsonify,

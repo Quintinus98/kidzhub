@@ -119,21 +119,36 @@ class Auth:
 
     def get_user_cart(self, user_id):
         """Returns user cart information"""
-        from models.cart import Cart, CartItems
+        cartItems = self._db.get_all_by_kwargs("CartItems", user_id=user_id)
+        if cartItems is None:
+            return []
 
-        try:
-            cart = (
-                self._db._session.query(Cart)
-                .filter_by(user_id=user_id)
-                .first()
+        items = []
+        for item in cartItems:
+            product = self._db.get_by_kwargs("Product", id=item.product_id)
+            price = self._db.get_by_kwargs(
+                "Price", product_id=product.id
+            ).to_dict()
+            display = price.get(item.size)
+
+            items.append(
+                {
+                    "id": item.id,
+                    "name": product.name,
+                    "description": product.description,
+                    "images": [image.url for image in product.images][0],
+                    "discount": product.discount,
+                    "quantity": item.quantity,
+                    "price": display,
+                }
             )
-            cartItems = self._db._session.query(CartItems).filter_by(
-                cart_id=cart.id
-            )
-            items = [
-                {"product_id": item.product_id, "quantity": item.quantity}
-                for item in cartItems
-            ]
-        except NoResultFound:
-            raise ValueError
         return items
+
+    def update_user_cart(self, data, item_id):
+        cartItems = self._db.get_by_kwargs("CartItems", id=item_id)
+        if cartItems is None:
+            raise ValueError
+        if set(data.keys()) <= set(["quantity", "size"]):
+            for key, val in data.items():
+                setattr(cartItems, key, val)
+            self._db._session.commit()

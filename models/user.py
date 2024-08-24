@@ -21,7 +21,7 @@ class User(BaseModel, Base):
     reset_token = Column(String(250))
 
     addresses = relationship("Address", cascade="all, delete")
-    cart = relationship("Cart", cascade="all, delete")
+    cartItems = relationship("CartItems", cascade="all, delete")
     order = relationship("Order", cascade="all, delete")
 
     def __init__(self, **kwargs) -> None:
