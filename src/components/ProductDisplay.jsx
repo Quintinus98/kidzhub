@@ -93,14 +93,11 @@ const ProductDisplay = ({ product }) => {
             <span className="text-xl font-semibold">Category :</span>{' '}
             {product.category}
           </p>
-          <p className="text-lg  text-red-500 font-normal mt-2.5">
-            <span className="text-xl font-semibold">Tags :</span> {product.tag}
-          </p>
           <div className="productdisplay-right-size">
             <h1 className="text-gray-300 text-lg font-semibold mt-3">
               Select size
             </h1>
-            <div className="flex gap-5  my-5 border cursor-pointer p-4 border-solid border-red-200">
+            <div className="flex gap-5  my-5  cursor-pointer p-4">
               {product.prices &&
                 Object.keys(product.prices).map((size) => (
                   <button
@@ -119,7 +116,7 @@ const ProductDisplay = ({ product }) => {
                 addToCart(product.id, selectedSize, mainImage);
               }}
               disabled={!selectedSize}
-              className="w-full text-white bg-red-400 cursor-pointer mt-2.5"
+              className="w-9/12 text-white bg-red-400 cursor-pointer"
             >
               ADD TO CART
             </button>
