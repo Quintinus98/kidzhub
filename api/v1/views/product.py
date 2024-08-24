@@ -36,22 +36,31 @@ def allowed_file(filename):
 def all_products():
     """Return all products"""
     products = db._session.query(Product).all()
-    return (
-        jsonify(
-            [
-                {
-                    "id": product.id,
-                    "name": product.name,
-                    "description": product.description,
-                    "images": [image.url for image in product.images],
-                    "price": product.price,
-                    "quantity": product.quantity,
-                }
-                for product in products
-            ]
-        ),
-        200,
-    )
+    productList = []
+
+    for product in products:
+        data = {
+            "XS": product.price.XS,
+            "S": product.price.S,
+            "M": product.price.M,
+            "L": product.price.L,
+            "XL": product.price.XL,
+            "XXL": product.price.XXL,
+        }
+        display = {k: v for k, v in data.items() if v != -1}
+        productList.append(
+            {
+                "id": product.id,
+                "name": product.name,
+                "description": product.description,
+                "images": [image.url for image in product.images],
+                "sold": product.sold,
+                "discount": product.discount,
+                "category": product.category.category,
+                "price": display,
+            }
+        )
+    return make_response(jsonify(productList), 200)
 
 
 @app_views.route("/products", methods=["POST"])
@@ -137,9 +146,7 @@ def get_product(id):
                 "price": display,
                 "sold": product.sold,
                 "discount": product.discount,
-                "category": "".join(
-                    [category.category for category in product.category]
-                ),
+                "category": product.category.category,
             }
         ),
         200,
@@ -149,7 +156,7 @@ def get_product(id):
 @app_views.route("/products/<id>", methods=["PUT"])
 def update_product(id):
     """Get a product if it exists"""
-    product = db._session.query(Product).filter_by(id=id).first()
+    product = db.get_by_kwargs(Product, id=id)
     if product is None:
         return jsonify({"error": "No product found"})
 
@@ -158,14 +165,38 @@ def update_product(id):
         return jsonify({"error": "Cannot update images"})
 
     data = request.form
-    valid_attr = Product.__table__.columns.keys()
-    for key in data.keys():
-        if key not in valid_attr:
-            return jsonify({"error": "Invalid inputs"})
-    for key, val in data.items():
+    tmp = {
+        "name": data.get("name", None),
+        "description": data.get("description", None),
+        "sold": data.get("sold", None),
+        "discount": data.get("discount", None),
+    }
+    # update product
+    for key, val in tmp.items():
+        if val is None:
+            continue
         setattr(product, key, val)
-    db._session.commit()
 
+    tmp2 = {
+        "XS": data.get("XS", -1, type=int),
+        "S": data.get("S", -1, type=int),
+        "M": data.get("M", -1, type=int),
+        "L": data.get("L", -1, type=int),
+        "XL": data.get("XL", -1, type=int),
+        "XXL": data.get("XLL", -1, type=int),
+    }
+    # update price
+    price = db.get_by_kwargs(Price, product_id=product.id)
+    for key, val in tmp2.items():
+        if val == -1:
+            continue
+        setattr(price, key, val)
+    # update category
+    category = db.get_by_kwargs(Category, product_id=product.id)
+    if data.get("category", None) != None:
+        setattr(category, "category", data.get("category"))
+
+    db._session.commit()
     return make_response(jsonify({"message": "Product updated"}), 201)
 
 
@@ -173,7 +204,7 @@ def update_product(id):
 def delete_product(id):
     """Get profile"""
     try:
-        product = db._session.query(Product).filter_by(id=id).first()
+        product = db.get_by_kwargs(Product, id=id)
     except NoResultFound:
         return jsonify({"message": "Product Unavailable"})
 

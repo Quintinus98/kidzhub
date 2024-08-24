@@ -16,8 +16,8 @@ class Product(BaseModel, Base):
     description = Column(Text(), nullable=False)
     sold = Column(Integer(), nullable=False, default=0)
     discount = Column(Integer(), nullable=False, default=0)
-    price = relationship("Price", cascade="all, delete")
-    category = relationship("Category", cascade="all, delete")
+    price = relationship("Price", cascade="all, delete", uselist=False)
+    category = relationship("Category", cascade="all, delete", uselist=False)
     images = relationship("Image", cascade="all, delete")
 
     def __repr__(self) -> str:

@@ -22,7 +22,7 @@ def home():
     return jsonify({"message": "Bienvenue"})
 
 
-@app_views.route("/getusers", methods=["GET"])
+@app_views.route("/users", methods=["GET"])
 def getUsers():
     """Return all users"""
     user = AUTH.get_users()

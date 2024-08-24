@@ -141,6 +141,8 @@ class Storage:
         """Get a model by key word"""
         if len(kwargs) != 1:
             return None
+        if isinstance(cls, str):
+            cls = classes[cls]
         obj = self._session.query(cls).filter_by(**kwargs).first()
         return obj
 

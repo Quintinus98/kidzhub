@@ -22,9 +22,9 @@ class Auth:
 
     def get_users(self):
         """Returns all user"""
-        users = self._db.all()
+        users = self._db.all("User")
         allUsers = []
-        for key, val in users.items():
+        for val in users.values():
             value = val.to_dict()
             value.pop("password", None)
             allUsers.append(value)
