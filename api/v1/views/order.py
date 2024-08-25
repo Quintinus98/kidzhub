@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
 """User API"""
-# from flask import request, abort, jsonify, make_response
 from flask import (
-    Flask,
     request,
     jsonify,
     abort,
     make_response,
-    url_for,
-    redirect,
 )
 from api.auth.auth import Auth
 from api.v1.views import app_views
