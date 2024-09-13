@@ -2,14 +2,15 @@ import React from 'react';
 import all_products from '../all_products';
 import Item from './Item';
 
+
 const Popular = () => {
   return (
-    <div className="flex flex-col flex-wrap items-center gap-2.5  border-b border-gray-200 dark:bg-gray-700">
-      <h1 className="text-white text-5xl font-semibold text-center md:text-left mt-10">
+    <div className="flex flex-col flex-wrap items-center gap-2.5 border-b border-gray-200 dark:bg-gray-700 mt-navbar">
+      <h1 className="text-white text-5xl font-semibold text-center md:text-left m-8">
         POPULAR IN KIDZHUB
       </h1>
       <hr
-        className="w-4/5 h-4
+        className="w-full h-4
   bg-grey"
       />
       <div

@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <div>
       <NavBar />
-      <Hero />
+      {/* <Hero /> */}
       <Popular />
       <Newsletter />
       <Footer />
