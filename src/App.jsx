@@ -13,15 +13,27 @@ import ForgotPassword from './pages/ForgotPassword';
 import CheckOut from './pages/CheckOut';
 import AdminPage from './components/Admin/AdminPage';
 import ProfilePage from './components/ProfilePage';
+import girl_banner from './assets/girl_banner.png';
+import boy_banner from './assets/boy_banner.png';
+import casual_banner from './assets/casual_banner.png';
 
 function App() {
   return (
     <ShopProvider>
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/boys" element={<ShopCategory category="Boys" />} />
-        <Route path="/girls" element={<ShopCategory category="Girls" />} />
-        <Route path="/casuals" element={<ShopCategory category="Casuals" />} />
+        <Route
+          path="/boys"
+          element={<ShopCategory banner={boy_banner} category="Boys" />}
+        />
+        <Route
+          path="/girls"
+          element={<ShopCategory banner={girl_banner} category="Girls" />}
+        />
+        <Route
+          path="/casuals"
+          element={<ShopCategory banner={casual_banner} category="Casuals" />}
+        />
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />

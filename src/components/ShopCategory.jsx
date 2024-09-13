@@ -10,7 +10,8 @@ const ShopCategory = (props) => {
   return (
     <div>
       <NavBar />
-      <div className="mt-navbar bg-gray-500">
+      <div className="mt-navbar bg-gray-800">
+        <img src={props.banner} alt="" className="w-full h-96" />
         <div className="flex flex-wrap items-center justify-center text-wrap">
           {all_product.map((item, i) => {
             if (props.category === item.category) {
@@ -20,8 +21,6 @@ const ShopCategory = (props) => {
                   id={item.id}
                   name={item.name}
                   image={item.image}
-                  new_price={item.new_price}
-                  old_price={item.old_price}
                 />
               );
             } else {

@@ -159,7 +159,11 @@ const Footer = () => {
                 href="#"
                 className="flex items-center justify-center text-white transition-all duration-200 bg-transparent border border-gray-700 rounded-full w-7 h-7 focus:bg-blue-600 hover:bg-blue-600 hover:border-blue-600 focus:border-blue-600"
               >
-                <img src={whatsapp_logo} alt="" className="h-6 w-6 rounded-lg" />
+                <img
+                  src={whatsapp_logo}
+                  alt=""
+                  className="h-6 w-6 rounded-lg"
+                />
               </a>
             </li>
 
@@ -168,7 +172,11 @@ const Footer = () => {
                 href="#"
                 className="flex items-center justify-center text-white transition-all duration-200 bg-transparent border border-gray-700 rounded-full w-7 h-7 focus:bg-blue-600 hover:bg-blue-600 hover:border-blue-600 focus:border-blue-600"
               >
-                 <img src={facebook_logo} alt="" className="h-6 w-6 rounded-lg" />
+                <img
+                  src={facebook_logo}
+                  alt=""
+                  className="h-6 w-6 rounded-lg"
+                />
               </a>
             </li>
 
@@ -177,7 +185,7 @@ const Footer = () => {
                 href="#"
                 className="flex items-center justify-center text-white transition-all duration-200 bg-transparent border border-gray-700 rounded-full w-7 h-7 focus:bg-blue-600 hover:bg-blue-600 hover:border-blue-600 focus:border-blue-600"
               >
-                 <img src={insta_logo} alt="" className="h-6 w-6 rounded-lg" />
+                <img src={insta_logo} alt="" className="h-6 w-6 rounded-lg" />
               </a>
             </li>
 

@@ -20,8 +20,6 @@ let all_products = [
     image2: b1,
     image3: b2,
     image4: b2,
-    new_price: 15000,
-    old_price: 20000,
     category: 'Boys',
     description:
       ' Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.',
@@ -40,8 +38,6 @@ let all_products = [
     image2: b2,
     image3: b3,
     image4: b3,
-    new_price: 15000,
-    old_price: 20000,
     category: 'Boys',
     description:
       ' Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.',
@@ -60,8 +56,6 @@ let all_products = [
     image2: b3,
     image3: b4,
     image4: b4,
-    new_price: 15000,
-    old_price: 20000,
     category: 'Boys',
     description:
       ' Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.',
@@ -80,8 +74,6 @@ let all_products = [
     image2: b4,
     image3: b4,
     image4: b4,
-    new_price: 15000,
-    old_price: 20000,
     category: 'Boys',
     description:
       ' Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.',
@@ -100,8 +92,6 @@ let all_products = [
     image2: c2,
     image3: c2,
     image4: c2,
-    new_price: 15000,
-    old_price: 20000,
     category: 'Casuals',
     description:
       ' Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.',
@@ -120,8 +110,6 @@ let all_products = [
     image2: c2,
     image3: c3,
     image4: c3,
-    new_price: 15000,
-    old_price: 20000,
     category: 'Casuals',
     description:
       ' Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.',
@@ -140,8 +128,6 @@ let all_products = [
     image2: c3,
     image3: c4,
     image4: c4,
-    new_price: 15000,
-    old_price: 20000,
     category: 'Casuals',
     description:
       ' Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.',
@@ -160,8 +146,6 @@ let all_products = [
     image2: c4,
     image3: c4,
     image4: c4,
-    new_price: 15000,
-    old_price: 20000,
     category: 'Casuals',
     description:
       ' Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.',
@@ -180,8 +164,6 @@ let all_products = [
     image2: g1,
     image3: g2,
     image4: g2,
-    new_price: 15000,
-    old_price: 20000,
     category: 'Girls',
     description:
       ' Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.',
@@ -200,8 +182,6 @@ let all_products = [
     image2: g2,
     image3: g3,
     image4: g3,
-    new_price: 15000,
-    old_price: 20000,
     category: 'Girls',
     description:
       ' Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.',
@@ -220,8 +200,6 @@ let all_products = [
     image2: g3,
     image3: g4,
     image4: g4,
-    new_price: 15000,
-    old_price: 20000,
     category: 'Girls',
     description:
       ' Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.',
@@ -240,8 +218,6 @@ let all_products = [
     image2: g4,
     image3: g4,
     image4: g4,
-    new_price: 15000,
-    old_price: 20000,
     category: 'Girls',
     description:
       ' Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.',

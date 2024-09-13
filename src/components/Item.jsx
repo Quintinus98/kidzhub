@@ -16,15 +16,7 @@ const Item = (props) => {
           className="h-48 w-48"
         />
       </Link>
-      <p className="mx-0 my-1.5">{props.name}</p>
-      <div className="flex gap-5">
-        <div className="text-[brown] text-lg font-semibold">
-          #{props.new_price}
-        </div>
-        <div className="text-[rebeccapurple] text-lg font-medium line-through">
-          #{props.old_price}
-        </div>
-      </div>
+      <p className="mx-0 my-1.5 text-white">{props.name}</p>
     </div>
   );
 };
